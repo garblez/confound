@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-
+/*
     enum Status {
         UNKNOWN,
         IMPOSSIBLE,
@@ -33,7 +33,7 @@ public class Main {
     Integer[] variable;
     ArrayList<Integer>[] domain;
     ArrayList<Integer>[] currentDomain;
-    HashMap<>
+    HashMap hashMap;
 
 
 
@@ -92,5 +92,6 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-    }
+
+    }*/
 }
