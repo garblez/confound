@@ -19,15 +19,27 @@ public class Constraint {
         return condition.apply(variables);
     }
 
-    public Constraint(Function<Integer[], Boolean> fn, Integer... variables) {
+    public Constraint(Integer... variables) {
         this.variables = variables;
-        this.condition = fn;
+    }
+
+    public Constraint where(Function<Integer[], Boolean> condition) {
+        this.condition = condition;
+        return this;
     }
 
     public static void main(String[] args){
-        Integer v = 3;
-        Integer u = 4;
-        Constraint c = new Constraint(x-> x[0] + x[1] < 3, v, u);
+        Integer variable0 = 3;
+        Integer variable1 = -3;
+        Constraint c = new Constraint(variable0, variable1).where(var -> var[0] + var[1] < 3);
         System.out.println(c.check());
+        Integer variable2 = 0;
+
+        Constraint e =  new Constraint(variable0, variable1, variable2).where(var -> allDifferent(var));
+
+    }
+
+    public static Boolean allDifferent(Integer[] i) {
+        return false;
     }
 }
