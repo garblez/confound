@@ -1,4 +1,8 @@
 package uk.ac.gla.confound;
 
-public class Variable {
+import java.util.ArrayList;
+
+public abstract class Variable {
+    public ArrayList<Constraint> constraints;
+
 }
