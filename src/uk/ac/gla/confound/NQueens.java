@@ -41,25 +41,22 @@ public class NQueens {
             constraints[i] = new BitSet(numQueens);
         /*
             Constraint?
-                v0  v1  v2  v3
+                v0  v1  v2  v3  ...
             v0  0   1   1   1
             v1  1   0   1   1
             v2  1   1   0   1
             v3  1   1   1   0
+            .
+            .
          */
-        constraints[0].set(0, false);
-        constraints[0].set(1, true);
-        constraints[1].set(0, true);
-        constraints[1].set(1, false);
+        for (int i = 0; i < numQueens; i++) {
+            for (int j = 0; j < numQueens; j++) {
+                constraints[i].set(j, i != j);
+            }
+        }
     }
 
-    void printStatus(){
-        System.out.println("Status: "+ status + " Consistent: " + consistent);
-        System.out.print("Variables: ");
-        for (int i = 0; i < variables.length; i++)
-            System.out.print(variables[i]);
-        System.out.println();
-    }
+
 
     void search()
     {
@@ -68,11 +65,7 @@ public class NQueens {
 
         int i = 1;
 
-
         while (status == Status.UNKNOWN) {
-            printStatus();
-            System.out.println("--------------------\nIndex: " + i);
-
             if (consistent)
                 i = label(i);
             else
@@ -88,28 +81,24 @@ public class NQueens {
 
     int label(int i)
     {
-        System.out.println("\tLabel() at index: " + i);
         consistent = false;
         int[] current = currentDomain[i-1]; // Account for fake variable at i == 0
+
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
         for (int j = 0; !consistent; j++) {
-            System.out.println("i: "+i+" j: "+ j + " size: "+currentDomain.length);
             if (i > numQueens || j > current.length)
                 return i;
 
-            if (j >= current.length || current[j] != NIL)
+            if (j >= current.length || current[j] == NIL)
                 break;  // We have an empty currentDomain TODO: MAY REMOVE THIS AS AN ISEMPTY BEFORE THE LOOP MAY WORK
             else
                 j++;  // Check the next available choice in the currentDomain
 
             variables[i] = current[j];
             consistent = true;
-            System.out.print("variables: ");
-            printArray(variables);
             // Run through all previously chosen variables and check if they are all consistent with the current candidate
             // variable[i]
             for (int h = 1; h < i && consistent; h++) {
-                System.out.println("\t\tChecking i:"+i+" against h:"+h);
                 consistent = check(i, h);    // Check that the constraint between variable[i] and variable[h] holds
 
                 // Remove value from candidates on constraint failure
@@ -126,22 +115,16 @@ public class NQueens {
     // Remove the first (and only instance) of element from array
     void remove(int[] array, int element)
     {
-        System.out.print("Remove ");
-        printArray(array);
-
         for (int i = 0; i < array.length; i++)
             if (array[i] == element) {
                 array[i] = NIL;
-                break; // Quit fast: we assume array is a set of elements
+                break; // Quit fast: we assume array is a set of distinct elements
             }
-
-        printArray(array);
     }
 
 
     int unlabel(int i)
     {
-        System.out.println("\tUnlabel() at index: "+i);
         int h = i - 1;
         currentDomain[i-1] = domain.clone();
         remove(currentDomain[h], variables[h]);
@@ -164,26 +147,13 @@ public class NQueens {
         return true; // No `inequal` constraint between i and h so the result is consistent for any choice of i
     }
 
-    public static void printArray(int[] array){
-        for (int x: array)
-            System.out.print(x + " ");
-        System.out.println();
-    }
 
     public static void main(String[] args)
     {
-        /*
-        For 2 queens:
-            _,_,_,_
-            _,_,_,q
-            _,q,_,_
-            _,_,_,_
-        queens must not share rows nor columns.
-        With our implementation, queens never share rows - we must check what columns they can have!
-         */
-        NQueens nQueens = new NQueens(2);
-
+        // With our implementation, queens never share rows - we must check what columns they can have!
+        NQueens nQueens = new NQueens(4);
         nQueens.search();
+
         System.out.print(nQueens.status + ": ");
         for (int i = 1; i < nQueens.variables.length; i++)
             System.out.print(nQueens.variables[i] + " ");
