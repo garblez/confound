@@ -1,6 +1,9 @@
 package uk.ac.gla.confound;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.BitSet;
+import java.util.List;
 
 public class NQueens {
 
@@ -16,7 +19,7 @@ public class NQueens {
 
     int[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
     int[] domain; // Assume all integer variables have the same domain
-    int[][] currentDomain; // domain for each variable, if an element doesn't exist then it's null
+    List[] currentDomain; // domain for each variable, if an element doesn't exist then it's null
     BitSet[] constraints;  // Constraint bitset for each variable
 
 
@@ -31,9 +34,12 @@ public class NQueens {
             domain[i] = i;
 
         // Set up variables' current domains
-        currentDomain = new int[numQueens][];
-        for (int i = 0; i < numQueens; i++)
-            currentDomain[i] = domain.clone();
+        currentDomain = new List[numQueens];
+        for (int i = 0; i < numQueens; i++) {
+            currentDomain[i] = new ArrayList();
+            for (Integer value: domain.clone())
+                currentDomain[i].add(value);
+        }
 
         // Initialise a has-constraint table
         constraints = new BitSet[numQueens];
@@ -82,19 +88,19 @@ public class NQueens {
     int label(int i)
     {
         consistent = false;
-        int[] current = currentDomain[i-1]; // Account for fake variable at i == 0
+        //int[] current = currentDomain[i-1]; // Account for fake variable at i == 0
 
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
         for (int j = 0; !consistent; j++) {
-            if (i > numQueens || j > current.length)
+            if (j >= numQueens)
                 return i;
 
-            if (j >= current.length || current[j] == NIL)
+            if (currentDomain[i].isEmpty())
                 break;  // We have an empty currentDomain TODO: MAY REMOVE THIS AS AN ISEMPTY BEFORE THE LOOP MAY WORK
             else
                 j++;  // Check the next available choice in the currentDomain
-
-            variables[i] = current[j];
+            //
+            variables[i] = (Integer)currentDomain[i].get(j);
             consistent = true;
             // Run through all previously chosen variables and check if they are all consistent with the current candidate
             // variable[i]
@@ -103,7 +109,8 @@ public class NQueens {
 
                 // Remove value from candidates on constraint failure
                 if (!consistent)
-                    remove(currentDomain[i-1], variables[i]);
+                    //remove(currentDomain[i-1], variables[i]);
+                    currentDomain[i-1].remove((Integer)variables[i]);
             }
         }
         if (consistent)
@@ -126,9 +133,9 @@ public class NQueens {
     int unlabel(int i)
     {
         int h = i - 1;
-        currentDomain[i-1] = domain.clone();
-        remove(currentDomain[h], variables[h]);
-        consistent = isEmpty(currentDomain[h]);
+        currentDomain[i-1] = Arrays.asList(domain.clone());
+        currentDomain[h].remove((Integer)variables[h]);
+        consistent = currentDomain[h].isEmpty();
         return h;
     }
 
