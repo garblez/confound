@@ -6,7 +6,7 @@ import java.util.function.Function;
 // We map variables involved in the constraint to the constraint requirements:
 // we can therefore check if the group of variables satisfy the constraint.
 
-public class Constraint<T extends Variable> {
+public class Constraint<T> {
     public Function<T[], Boolean> condition;
     public T[] variables;
 
@@ -26,7 +26,4 @@ public class Constraint<T extends Variable> {
     public static void main(String[] args){
     }
 
-    public static Boolean allDifferent(Variable[] i) {
-        return false;
-    }
 }
