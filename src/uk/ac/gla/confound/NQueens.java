@@ -18,8 +18,8 @@ public class NQueens {
     int numQueens;
 
     int[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
-    int[] domain; // Assume all integer variables have the same domain
-    List[] currentDomain; // domain for each variable, if an element doesn't exist then it's null
+    Integer[] domain; // Assume all integer variables have the same domain
+    ArrayList<Integer>[] currentDomain; // current potential domain values for each variable
     BitSet[] constraints;  // Constraint bitset for each variable
 
 
@@ -29,14 +29,15 @@ public class NQueens {
         variables[0] = NIL;
 
         // Initialise the domain
-        domain = new int[numQueens];
+        domain = new Integer[numQueens];
         for (int i = 0; i < numQueens; i++)
             domain[i] = i;
 
         // Set up variables' current domains
-        currentDomain = new List[numQueens];
-        for (int i = 0; i < numQueens; i++) {
-            currentDomain[i] = new ArrayList();
+        currentDomain = new ArrayList[numQueens+1];
+        currentDomain[0] = null;                    // TODO: Double-check ramifications (potential NullPointerExceptions)
+        for (int i = 1; i <= numQueens; i++) {
+            currentDomain[i] = new ArrayList<Integer>();
             for (Integer value: domain.clone())
                 currentDomain[i].add(value);
         }
@@ -72,6 +73,11 @@ public class NQueens {
         int i = 1;
 
         while (status == Status.UNKNOWN) {
+            System.out.print("i: "+i + ", variables: [");
+            for (Integer x: variables)
+                System.out.print(x + ", ");
+            System.out.println("]");
+
             if (consistent)
                 i = label(i);
             else
@@ -86,20 +92,23 @@ public class NQueens {
 
 
     int label(int i)
+
     {
+        System.out.println("label");
         consistent = false;
-        //int[] current = currentDomain[i-1]; // Account for fake variable at i == 0
 
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
-        for (int j = 0; !consistent; j++) {
-            if (j >= numQueens)
-                return i;
+        for (int j = 0; j < currentDomain[i].size() && !consistent; j++) {
+            System.out.println("Label outer loop: i: "+i);
+            //if (j >= numQueens)
+            //    return i;
 
-            if (currentDomain[i].isEmpty())
-                break;  // We have an empty currentDomain TODO: MAY REMOVE THIS AS AN ISEMPTY BEFORE THE LOOP MAY WORK
-            else
-                j++;  // Check the next available choice in the currentDomain
+            //if (currentDomain[i].isEmpty())
+            //    break;  // We have an empty currentDomain TODO: MAY REMOVE THIS AS AN ISEMPTY BEFORE THE LOOP MAY WORK
+            //else
+            //    j++;  // Check the next available choice in the currentDomain
             //
+            System.out.println("Next variable[i]: "+ ((ArrayList<Integer>)currentDomain[i]).get(j));
             variables[i] = (Integer)currentDomain[i].get(j);
             consistent = true;
             // Run through all previously chosen variables and check if they are all consistent with the current candidate
@@ -119,6 +128,8 @@ public class NQueens {
             return i;
     }
 
+
+
     // Remove the first (and only instance) of element from array
     void remove(int[] array, int element)
     {
@@ -133,9 +144,12 @@ public class NQueens {
     int unlabel(int i)
     {
         int h = i - 1;
-        currentDomain[i-1] = Arrays.asList(domain.clone());
+
+        System.out.println("Unlabel (i: "+i+", h: "+h+")");
+        currentDomain[i].addAll(Arrays.asList(domain.clone()));
         currentDomain[h].remove((Integer)variables[h]);
-        consistent = currentDomain[h].isEmpty();
+        consistent = !currentDomain[h].isEmpty();
+        System.out.println("Consistent: "+consistent);
         return h;
     }
 
@@ -158,7 +172,7 @@ public class NQueens {
     public static void main(String[] args)
     {
         // With our implementation, queens never share rows - we must check what columns they can have!
-        NQueens nQueens = new NQueens(4);
+        NQueens nQueens = new NQueens(5);
         nQueens.search();
 
         System.out.print(nQueens.status + ": ");

@@ -36,6 +36,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -109,7 +110,7 @@
       <workItem from="1571084373869" duration="599000" />
       <workItem from="1571593111162" duration="2812000" />
       <workItem from="1571765463300" duration="9993000" />
-      <workItem from="1572046579561" duration="3817000" />
+      <workItem from="1572046579561" duration="9341000" />
     </task>
     <servers />
   </component>
@@ -142,15 +143,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>87</line>
-          <properties class="uk.ac.gla.confound.NQueens" method="label">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>132</line>
+          <line>142</line>
           <properties class="uk.ac.gla.confound.NQueens" method="unlabel">
             <option name="EMULATED" value="true" />
           </properties>
@@ -158,7 +151,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>122</line>
+          <line>132</line>
           <properties class="uk.ac.gla.confound.NQueens" method="remove">
             <option name="EMULATED" value="true" />
           </properties>
@@ -171,147 +164,142 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>75</line>
+          <line>80</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>77</line>
+          <line>82</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>83</line>
+          <line>88</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>93</line>
+          <line>99</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>95</line>
+          <line>102</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>97</line>
+          <line>104</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>98</line>
+          <line>105</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>106</line>
+          <line>114</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>107</line>
+          <line>115</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>110</line>
+          <line>118</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>113</line>
+          <line>121</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>115</line>
+          <line>123</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>118</line>
+          <line>126</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>116</line>
+          <line>124</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>134</line>
+          <line>144</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>135</line>
+          <line>147</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>136</line>
+          <line>148</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>137</line>
+          <line>149</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>138</line>
+          <line>151</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>151</line>
+          <line>164</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>152</line>
+          <line>165</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>153</line>
+          <line>166</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>124</line>
+          <line>134</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>125</line>
+          <line>135</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>126</line>
+          <line>136</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>127</line>
+          <line>137</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" log-message="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>102</line>
+          <line>110</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
-          <line>101</line>
+          <line>108</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
