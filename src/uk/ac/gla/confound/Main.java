@@ -4,7 +4,7 @@ package uk.ac.gla.confound;
 public class Main {
     public static void main(String[] args)
     {
-        NQueens nQueens = new NQueens(5);
+        NQueens nQueens = new NQueens(8);
 
         BacktrackSolver btSolver = new BacktrackSolver();
         btSolver.solve(nQueens);
