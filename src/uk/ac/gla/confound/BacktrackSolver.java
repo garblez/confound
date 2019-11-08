@@ -137,5 +137,4 @@ public class BacktrackSolver {
         s.append(this.p.variables[this.p.variables.length-1]+"]");
         return s.toString();
     }
-
 }
