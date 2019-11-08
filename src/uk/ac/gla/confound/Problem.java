@@ -1,7 +1,8 @@
 package uk.ac.gla.confound;
 
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.sun.org.apache.xpath.internal.operations.String;
+
+import java.util.*;
 
 public abstract class Problem {
     Solver solver;
@@ -14,6 +15,8 @@ public abstract class Problem {
     Integer[] domain; // Assume all integer variables have the same domain
     ArrayList<Integer>[] currentDomain; // current potential domain values for each variable
     BitSet[] constraints;  // Constraint bitset for each variable
+
+    List<int[]> solutions;
 
     public Problem(int numVariables) {
         this.numVariables = numVariables;
@@ -52,5 +55,31 @@ public abstract class Problem {
                 constraints[i].set(j, i != j);  // Let there be a constraint between all different variables
             }
         }
+        solutions = new ArrayList<int[]>();
+    }
+
+
+    public void print(int x)
+    {
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < numVariables; i++) {
+            for (int j = 0; j < numVariables; j++) {
+                if (j==solutions.get(x)[i])
+                    s.append("*");
+                else
+                    s.append("  ");
+            }
+            s.append("\n");
+        }
+        for (int i = 0; i < numVariables; i++)
+            s.append("==");
+        s.append("\n");
+        System.out.print(s.toString());
+    }
+
+    public void printAll()
+    {
+        for (int i = 0; i < solutions.size(); i++)
+            print(i);
     }
 }
