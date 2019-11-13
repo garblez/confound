@@ -3,61 +3,10 @@ package uk.ac.gla.confound;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BacktrackSolver {
+public class BacktrackSolver extends Solver {
 
-    Problem p;
-    ArrayList<Integer> previousValues = new ArrayList<>();
-    Status status;
-
-    int numIterations = 0;
-    int numSolutions = 0;
-
-    public void report(Problem p)
-    {
-        System.out.println("Status report");
-        System.out.println("#Iterations: "+numIterations);
-        System.out.println("#Solutions: "+numSolutions);
-        System.out.println("Solutions are as follows\n=========================");
-        for (int[] arr: p.solutions) {
-            System.out.print("[");
-            for (int x : arr) {
-                System.out.print(x + ", ");
-            }
-            System.out.println("]");
-        }
-        p.printAll();
-    }
-
-
-    public void solve(Problem p)
-    {
-        search(p);
-    }
-
-    public void search(Problem p)
-    {
-        this.p = p;
-        status = Status.UNKNOWN;
-        p.consistent = true;
-
-        int i = 1;
-
-        while (status == Status.UNKNOWN) {
-            if (p.consistent)
-                i = label(i);
-            else
-                i = unlabel(i);
-
-            if (i > p.numVariables) {
-                ++numSolutions;    // Now we've found one iteration, we try to find another until there is none
-                p.solutions.add(Arrays.copyOfRange(p.variables, 1, p.variables.length));
-                i -= 1;
-                p.consistent = false;
-            } else if (i == 0)
-                status = Status.IMPOSSIBLE;
-
-            ++numIterations;
-        }
+    public BacktrackSolver(Problem p) {
+        super(p);
     }
 
     /**
@@ -111,30 +60,5 @@ public class BacktrackSolver {
         return h;
     }
 
-    /**
-     * Check tells if the constraint between variable i and variable h holds given their current values.
-     * @param i The current variable's index
-     * @param h The preceding variable's index
-     * @return  true if the constraint between variable i and variable h holds otherwise false
-     */
-    public boolean check(int i, int h)
-    {
-        if (p.constraints[i-1].get(h-1))
-            return p.variables[i] != p.variables[h] && Math.abs(p.variables[i] - p.variables[h]) != Math.abs(i - h);
-        return true; // No constraint between i and h so any value either hold works with the other.
-    }
 
-    public String solution()
-    {
-        StringBuilder s = new StringBuilder();
-        s.append("Solution[");
-        if (this.status == Status.IMPOSSIBLE){
-            s.append("]");
-            return s.toString();
-        }
-        for (int i = 1; i < this.p.variables.length-1; i++)
-            s.append(this.p.variables[i] + ", ");
-        s.append(this.p.variables[this.p.variables.length-1]+"]");
-        return s.toString();
-    }
 }
