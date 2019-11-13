@@ -5,19 +5,19 @@ import java.util.*;
 public class ForwardcheckSolver extends Solver {
 
     // Members particular to explicit forward-checking
-    ArrayList<Integer> reduction;
-    Stack<ArrayList<Integer>>[] reductions;  // The redacted domain sets in LIFO order for each variable
+    Stack<Integer> reduction;
+    Stack<Stack<Integer>>[] reductions;  // The redacted domain sets in LIFO order for each variable
     Stack<Integer>[] futureFC;
     Stack<Integer>[] pastFC;  // TODO: Not necessary for explicit forward checking but useful for backjumping varieties
 
     public ForwardcheckSolver(Problem p) {
         super(p);
-        reduction = new ArrayList();
+        reduction = new Stack();
         reductions = new Stack[p.numVariables];
         futureFC = new Stack[p.numVariables];
         pastFC = new Stack[p.numVariables];
         for (int i = 0; i < p.numVariables; i++) {
-            reductions[i] = new Stack<ArrayList<Integer>>();
+            reductions[i] = new Stack<Stack<Integer>>();
             futureFC[i] = new Stack<>();
             pastFC[i] = new Stack<>();
             pastFC[i].push(0);
@@ -36,7 +36,7 @@ public class ForwardcheckSolver extends Solver {
             // variable[i]
             for (int f = i+1; f < p.numVariables && p.consistent; f++) {
                 if (!(p.consistent = checkForward(i,f))) {
-                    p.currentDomain[i].remove(p.variables[i]);
+                    p.currentDomain[i].remove((Integer)p.variables[i]);
                     undoReductions(i);
                 }
             }
@@ -68,12 +68,12 @@ public class ForwardcheckSolver extends Solver {
 
 
     boolean checkForward(int i, int j) {
-        reduction = new ArrayList<Integer>();   // reduction <- nil
+        reduction = new Stack<Integer>();   // reduction <- nil
 
         for (int a = 0; a < p.currentDomain[j].size(); a++) {
             p.variables[j] = p.currentDomain[j].get(a);
             if (!check(i,j))
-                reduction.add(p.variables[j]);
+                reduction.push(p.variables[j]);
 
             if (!reduction.isEmpty()) {
                 p.currentDomain[j] = setDifference(p.currentDomain[j], reduction);
@@ -86,16 +86,33 @@ public class ForwardcheckSolver extends Solver {
     }
 
     void undoReductions(int i) {
+        for (Integer j: futureFC[i]) {
+            reduction = reductions[i].pop();
+            p.currentDomain[j] = setUnion(p.currentDomain[j], reduction);
+            pastFC[j].pop();
+        }
+        futureFC[i] = new Stack<>();
     }
 
     void updatedCurrentDomain(int i) {
-
+        p.currentDomain[i] = new ArrayList<>(Arrays.asList(p.domain.clone()));
+        for (Stack<Integer> x: reductions[i]) {
+            p.currentDomain[i] = setDifference(p.currentDomain[i], x);
+        }
     }
 
     // Return a collection of values present in domain or reduction but not in both
-    ArrayList<Integer> setDifference(ArrayList domain, ArrayList reduction) {
+    ArrayList<Integer> setDifference(ArrayList domain, Stack reduction) {
         ArrayList<Integer> difference = new ArrayList<Integer>(domain);
         difference.removeIf(reduction::contains);
         return difference;
+    }
+
+    ArrayList<Integer> setUnion(ArrayList domain, Stack<Integer> reduction) {
+        ArrayList<Integer> union = new ArrayList<Integer>(domain);
+        for (Integer x: reduction)
+            if (!domain.contains(x))
+                union.add(x);
+        return union;
     }
 }
