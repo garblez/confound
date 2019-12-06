@@ -1,13 +1,9 @@
 package uk.ac.gla.confound;
 
-import com.sun.org.apache.xpath.internal.operations.String;
 
 import java.util.*;
 
 public abstract class Problem {
-    Solver solver;
-
-    Status status;
     boolean consistent;
     int numVariables;
 
@@ -40,22 +36,8 @@ public abstract class Problem {
         constraints = new BitSet[this.numVariables];
         for (int i = 0; i < this.numVariables; i++)
             constraints[i] = new BitSet(this.numVariables);
-        /*
-            Constraint?
-                v0  v1  v2  v3  ...
-            v0  0   1   1   1
-            v1  1   0   1   1
-            v2  1   1   0   1
-            v3  1   1   1   0
-            .
-            .
-         */
-        for (int i = 0; i < this.numVariables; i++) {
-            for (int j = 0; j < this.numVariables; j++) {
-                constraints[i].set(j, i != j);  // Let there be a constraint between all different variables
-            }
-        }
-        solutions = new ArrayList<int[]>();
+
+        solutions = new ArrayList<>();
     }
 
 
@@ -75,6 +57,11 @@ public abstract class Problem {
             s.append("==");
         s.append("\n");
         System.out.print(s.toString());
+    }
+
+    public boolean check(int i, int j)
+    {
+        return true;
     }
 
     public void printAll()

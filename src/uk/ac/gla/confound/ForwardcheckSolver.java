@@ -72,7 +72,7 @@ public class ForwardcheckSolver extends Solver {
 
         for (int a = 0; a < p.currentDomain[j].size(); a++) {
             p.variables[j] = p.currentDomain[j].get(a);
-            if (!check(i,j))
+            if (!p.check(i,j))
                 reduction.push(p.variables[j]);
 
             if (!reduction.isEmpty()) {
@@ -95,9 +95,9 @@ public class ForwardcheckSolver extends Solver {
     }
 
     void updatedCurrentDomain(int i) {
-        p.currentDomain[i] = new ArrayList<>(Arrays.asList(p.domain.clone()));
-        for (Stack<Integer> x: reductions[i]) {
-            p.currentDomain[i] = setDifference(p.currentDomain[i], x);
+        p.currentDomain[i-1] = new ArrayList<>(Arrays.asList(p.domain.clone()));
+        for (Stack<Integer> x: reductions[i-1]) {
+            p.currentDomain[i-1] = setDifference(p.currentDomain[i-1], x);
         }
     }
 

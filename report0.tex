@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{float}
+\input{epsf}
+\thispagestyle{empty}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{0.75in}
+
+\usepackage[ruled,vlined]{algorithm2e}
+
+
+%\usepackage{MnSymbol,wasysym}
+
+\usepackage{listings}
+\lstset{ %
+language=Java,              % choose the language of the code
+basicstyle=\scriptsize,     % the size of the fonts that are used for the code
+%basicstyle=\tiny,     % the size of the fonts that are used for the code
+numbers=left,               % where to put the line-numbers
+%numberstyle=\tiny,    % the size of the fonts that are used for the line-numbers
+numberstyle=\scriptsize,    % the size of the fonts that are used for the line-numbers
+numbersep=10pt,             % how far the line-numbers are from the code
+frame=trBL,                 % adds a frame around the code
+%tabsize=2,                  % sets default tabsize to 2 spaces
+captionpos=b,               % sets the caption-position to bottom
+breaklines=true,            % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+showstringspaces=false,     % Don't show underscores as space characters
+frameround=fttt
+}
+
+
+
+\begin{document}
+\begin{tabbing}
+\` by Max\\
+\` \today \\
+\end{tabbing}
+\begin{Large}
+\begin{center}
+{\bf Backtracking}
+\end{center}
+\end{Large}
+\section*{Problem Modelling}
+At present, problems are modelled after an abstract Problem class. This class contains the variables of the problem in the form of an int array with a size one greater than the total number of variables in the problem (variable 0 is assumed a fake variable (if the solver ends up checking this variable then no consistent solution was found).
+\section*{Backtracking Solver}
+The BacktrackSolver class inherits the basic search procedure from Solver - an abstract class which also implements the SolverMethods label, unlabel, check and solution - since most binary constraint satisfaction solvers derive from a similar search procedure with differences in their labelling and unlabelling methods.
+\subsection*{Search Method}
+The search algorithm for the solvers involved stem from the following algorithm as discussed in \cite{Prosser93}:
+\begin{algorithm}
+\DontPrintSemicolon
+\nl $search(n,status)$ \;
+\nl \Begin{
+\nl consistent := true\;
+\nl status := UNKNOWN\;
+\nl i	:= 1\;
+\nl \While{status is UNKNOWN}{
+		\nl \If{consistent}{
+			i := label(i, consistent)\;
+		}\nl \Else{
+			\nl i := unlabel(i, consistent)\;
+		}
+	}
+	\nl \If{i $>$ n}{
+		\nl status := SOLUTION\;
+	}\nl \ElseIf{i == 0}{
+		\nl status := IMPOSSIBLE\;}
+}
+\caption{Search}
+\label{bcSearch}
+\end{algorithm}
+$n$ represents an integer value corresponding to the number of variables in the Problem instance. $consistent$ represents the current state of the solution: i.e., whether or not it meets all of the current required constraints with its current variables's values. $status$ too is associated with a Problem instance: if the current search has found a solution, know's if a solution is not possible or if either has yet to be determined. $i$ is the index for the current variable being checked: as $variables$ contains a dummy value at index 0 and contains n+1 elements, the search starts with index at 1. If the search loop ever reaches this dummy variable then there are no more possibilities to search and therefore, the search must terminate. On the other hand, if the search is consistent on the choice of a final variable then a solution is found.
+
+\subsection*{Label}
+The label method listed prior has its algorithm given below. Here, square brackets are used to subscript indices such that, for example, variable[i] is the ith variable present. In this example, we assume that consistent is a global value, possibly tied to a Problem object the Solver interacts with. We initially assume that the problem is not yet consistent. Then, while we do not have a consistent solution, each variable value remaining to be checked in the current variable's domain is investigated. The value picked from this domain is checked against all other prior variable values set in the search run and if it is inconsistent with any such variables as per the given constraint, it is excluded from the current variable's domain. At the end of this search, if the current variable's value is consistent with all prior variables, we advance to the next variable - otherwise, we stay on the current variable for another iteration of search() to "unlabel" it.
+\begin{algorithm}[!htpb]
+\DontPrintSemicolon
+\nl $label(i)$\;
+\nl \Begin{
+\nl consistent := false\;
+\nl\ForEach{variable in current-domain[i] while not consistent}{
+\nl consistent := true\;
+\nl\For{ h := 1 to i - 1 and consistent}{
+		\nl consistent := check(i, h)\;
+		\nl\If{not consistent}{
+			\nl remove variable[i] from current-domain[i]\;
+		}
+	}
+	\nl\If {consistent}{
+		\nl return i + 1\;
+		}\Else{
+		\nl return i\;		
+		}
+}
+}
+\caption{Backtrack Label}
+\label{btLabel}
+\end{algorithm}
+\subsection*{Unlabel}
+Where $i$ is the current variable's index, h is the previous variable's index and the square brackets denote subscripting such that, for example, current-domain[h] specifies the current consistent domain set for the previous variable. The symbol $:=$ is used in this context to mean "assigned the value of". We first begin with clearing and resetting the current variable's domain: no suitable variable value was found so we reset the domain to the original no consistent value was found given a previous variable's so we must assume any value may be correct if we decide to search this variable again for a given history. We then $\textbf{backtrack}$ one variable to h and remove its current value from its domain, given that it just failed to find a value for the variable after it (an assumption in backtracking search). Our problem is then consistent providing that variable h still has values in its domain to choose from. We then finally backtrack by returning h as the current variable index.
+\begin{algorithm}
+\DontPrintSemicolon
+\nl $unlabel(i)$\;
+\nl \Begin{
+\nl	h := i - 1\;
+\nl current-domain[i] reset to original domain[i]\;
+\nl remove variable[h] from current-domain[h] \;
+\nl consistent := false if current-domain[h] is empty otherwise true\;
+\nl return h\;
+}
+\caption{Backtrack Unlabel}
+\label{btUnlabel}
+\end{algorithm}
+
+\paragraph*{The check(i,j) method mentioned in \ref{btLabel} relates to checking the constraint relationship bewtween variable i and variable j: if there are no constraints between them or the constraint between them holds for their current values, then check returns true. Otherwise, check returns false.}
+
+\subsection*{Trailing Method}
+\subsection*{Copying Method}
+
+\subsection*{Code Listings}
+\subsubsection*{The Problem of NQueens}
+\lstinputlisting{src/uk/ac/gla/confound/Problem.java}
+\lstinputlisting{src/uk/ac/gla/confound/NQueens.java}
+
+\subsubsection*{Solver}
+\lstinputlisting{src/uk/ac/gla/confound/Solver.java}
+\lstinputlisting{src/uk/ac/gla/confound/SolverMethods.java}
+\subsubsection*{Backtrack Solver}
+\lstinputlisting{src/uk/ac/gla/confound/BacktrackSolver.java}
+
+
+\bibliographystyle{abbrv}
+\bibliography{bib0}
+\end{document}

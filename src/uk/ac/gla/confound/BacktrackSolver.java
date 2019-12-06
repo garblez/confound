@@ -26,10 +26,8 @@ public class BacktrackSolver extends Solver {
             // Run through all previously chosen variables and check if they are all consistent with the current candidate
             // variable[i]
             for (int h = 1; h < i && p.consistent; h++) {
-                //consistent = check(i, h);    // Check that the constraint between variable[i] and variable[h] holds
-
                 // Remove value from candidates on constraint failure
-                if (!(p.consistent = check(i, h)))
+                if (!(p.consistent = p.check(i, h)))
                     p.currentDomain[i-1].remove((Integer)p.variables[i-1]);
             }
         }

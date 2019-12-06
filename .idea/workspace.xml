@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e33eb4ea-6865-431c-8073-5df3cc7567e9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/BacktrackSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/BacktrackSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/ForwardcheckSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/ForwardcheckSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Problem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/SolverMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/SolverMethods.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -23,23 +29,19 @@
   </component>
   <component name="ProjectId" id="1S4fENjUYnTVl9b6vPmwdPSxyW1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -58,6 +60,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -69,15 +83,30 @@
       <option name="project" value="LOCAL" />
       <updated>1573253794837</updated>
     </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e33eb4ea-6865-431c-8073-5df3cc7567e9" name="Default Changelist" comment="" />
+      <created>1574686844353</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574686844353</updated>
+      <workItem from="1574686846321" duration="611000" />
+      <workItem from="1574725880265" duration="2285000" />
+      <workItem from="1575360307605" duration="7496000" />
+    </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -86,5 +115,204 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'backtrack'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'backtrack'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="852" y="109" key="#com.intellij.ide.util.MemberChooser" timestamp="1575361189950">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state x="852" y="109" key="#com.intellij.ide.util.MemberChooser/65.24.1301.744@65.24.1301.744" timestamp="1575361189950" />
+    <state width="1255" height="454" key="GridCell.Tab.0.bottom" timestamp="1575396285974">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state width="1255" height="454" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1575396285974" />
+    <state width="1255" height="454" key="GridCell.Tab.0.center" timestamp="1575396285973">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state width="1255" height="454" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1575396285973" />
+    <state width="1255" height="454" key="GridCell.Tab.0.left" timestamp="1575396285969">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state width="1255" height="454" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1575396285969" />
+    <state width="1255" height="454" key="GridCell.Tab.0.right" timestamp="1575396285973">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state width="1255" height="454" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1575396285973" />
+    <state width="1255" height="213" key="GridCell.Tab.1.bottom" timestamp="1575396092045">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state width="1255" height="213" key="GridCell.Tab.1.bottom/65.24.1301.744@65.24.1301.744" timestamp="1575396092045" />
+    <state width="1255" height="213" key="GridCell.Tab.1.center" timestamp="1575396092044">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state width="1255" height="213" key="GridCell.Tab.1.center/65.24.1301.744@65.24.1301.744" timestamp="1575396092044" />
+    <state width="1255" height="213" key="GridCell.Tab.1.left" timestamp="1575396092044">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state width="1255" height="213" key="GridCell.Tab.1.left/65.24.1301.744@65.24.1301.744" timestamp="1575396092044" />
+    <state width="1255" height="213" key="GridCell.Tab.1.right" timestamp="1575396092045">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state width="1255" height="213" key="GridCell.Tab.1.right/65.24.1301.744@65.24.1301.744" timestamp="1575396092045" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java</url>
+          <line>5</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>90</line>
+          <properties class="uk.ac.gla.confound.FCSolver" method="label">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>107</line>
+          <properties class="uk.ac.gla.confound.FCSolver" method="unlabel">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>80</line>
+          <properties class="uk.ac.gla.confound.FCSolver" method="update">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>66</line>
+          <properties class="uk.ac.gla.confound.FCSolver" method="undo">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
+          <line>48</line>
+          <properties class="uk.ac.gla.confound.FCSolver" method="checkForward">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="p.variables" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
