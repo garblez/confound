@@ -17,25 +17,31 @@ public abstract class Solver implements SolverMethods {
 
     int numIterations;
     int numSolutions;
+    int backtracks;
+    double duration;
 
     public Solver(Problem p) {
+        numIterations = 0;
         numSolutions = 0;
-        numSolutions = 0;
+        backtracks = 0;
         this.p = p;
     }
 
     public void solve()
     {
+        duration = System.currentTimeMillis();
         status = Status.UNKNOWN;
         p.consistent = true;
 
         int i = 1;
 
         while (status == Status.UNKNOWN) {
-            if (p.consistent)
+            if (p.consistent) {
                 i = label(i);
-            else
+            } else {
                 i = unlabel(i);
+                ++backtracks;
+            }
 
             if (i > p.numVariables) {
                 ++numSolutions;    // Now we've found one iteration, we try to find another until there is none
@@ -45,8 +51,11 @@ public abstract class Solver implements SolverMethods {
             } else if (i == 0)
                 status = Status.IMPOSSIBLE;
 
+
+
             ++numIterations;
         }
+        duration = System.currentTimeMillis() - duration;
     }
 
 
@@ -55,8 +64,11 @@ public abstract class Solver implements SolverMethods {
 
     public void report(Problem p)
     {
+
         System.out.println("Status report");
         System.out.println("#Iterations: "+numIterations);
+        System.out.println("Duration: " + duration + "(ms)");
+        System.out.println("Backtracks: " + backtracks);
         System.out.println("#Solutions: "+numSolutions);
         System.out.println("Solutions are as follows\n=========================");
         for (int[] arr: p.solutions) {
@@ -66,7 +78,7 @@ public abstract class Solver implements SolverMethods {
             }
             System.out.println("]");
         }
-        p.printAll();
+
     }
 
 
