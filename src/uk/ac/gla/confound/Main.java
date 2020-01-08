@@ -20,9 +20,13 @@ public class Main {
         btSolver.report(nQueens);
         */
 
-        NQueens eightQueens = new NQueens(4);
+        NQueens eightQueens = new NQueens(10);
+        NQueens eightQueensFC = new NQueens(10);
         Solver fcSolver = new ForwardChecker(eightQueens);
         fcSolver.solve();
         fcSolver.report(eightQueens);
+        Solver btSolver = new BacktrackSolver(eightQueensFC);
+        btSolver.solve();
+        btSolver.report(eightQueensFC);
     }
 }

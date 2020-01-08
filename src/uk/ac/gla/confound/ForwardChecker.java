@@ -91,14 +91,7 @@ public class ForwardChecker extends Solver {
             return h;
         undoReductions(h);
         updatedCurrentDomain(i);
-        System.out.print("["+h+"] Remove "+p.variables[h]+" from ");
-        for (Integer val: p.currentDomain[h])
-            System.out.print(val+", ");
-        System.out.println();
         p.currentDomain[h].remove((Integer)p.variables[h]);
-        for (Integer val: p.currentDomain[h])
-            System.out.print(val+", ");
-        System.out.println();
         p.consistent = !p.currentDomain[h].isEmpty();
         return h;
     }
