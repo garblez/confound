@@ -7,30 +7,22 @@ public abstract class Problem {
     boolean consistent;
     int numVariables;
 
-    int[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
-    Integer[] domain; // Assume all integer variables have the same domain
-    ArrayList<Integer>[] currentDomain; // current potential domain values for each variable
+    Variable[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
+    Domain domain; // Assume all integer variables have the same domain
+
     BitSet[] constraints;  // Constraint bitset for each variable
 
     List<int[]> solutions;
 
     public Problem(int numVariables) {
-        this.numVariables = numVariables;
-        variables = new int[this.numVariables + 1];
-
         // Initialise the domain
-        domain = new Integer[this.numVariables];
-        for (int i = 0; i < this.numVariables; i++)
-            domain[i] = i;
+        domain = new Domain(numVariables);
 
-        // Set up variables' current domains
-        currentDomain = new ArrayList[this.numVariables +1];
-        currentDomain[0] = null;
-        for (int i = 1; i <= this.numVariables; i++) {
-            currentDomain[i] = new ArrayList<>();
-            for (Integer value: domain.clone())
-                currentDomain[i].add(value);
-        }
+        this.numVariables = numVariables;
+        variables = new Variable[this.numVariables + 1];
+        for (int i = 0; i < this.numVariables + 1; i++)
+            variables[i] = new Variable(domain);
+
 
         // Initialise a has-constraint table
         constraints = new BitSet[this.numVariables];

@@ -32,7 +32,7 @@ public class NQueens extends Problem {
     public boolean check(int i, int h)
     {
         if (constraints[i-1].get(h-1))
-            return variables[i] != variables[h] && Math.abs(variables[i] - variables[h]) != Math.abs(i - h);
+            return !variables[i].equals(variables[h]) && Math.abs(variables[i].value - variables[h].value) != Math.abs(i - h);
         return true; // No constraint between i and h so any value either hold works with the other.
     }
 

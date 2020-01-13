@@ -45,13 +45,17 @@ public abstract class Solver implements SolverMethods {
 
             if (i > p.numVariables) {
                 ++numSolutions;    // Now we've found one iteration, we try to find another until there is none
-                p.solutions.add(Arrays.copyOfRange(p.variables, 1, p.variables.length));
+
+                int[] solution = new int[p.variables.length-1];
+                for (int j = 1; j < p.variables.length; j++) {
+                    solution[j-1] = p.variables[j].value;
+                }
+                p.solutions.add(solution);
+
                 i -= 1;
                 p.consistent = false;
             } else if (i == 0)
                 status = Status.IMPOSSIBLE;
-
-
 
             ++numIterations;
         }

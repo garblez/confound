@@ -4,29 +4,23 @@ package uk.ac.gla.confound;
 public class Main {
     public static void main(String[] args)
     {
-        /*
-        double time;
-        NQueens nQueens = new NQueens(4);
 
-        Solver btSolver = new BacktrackSolver(nQueens);
 
-        time = System.currentTimeMillis();
+        NQueens eightQueens = new NQueens(4);
+        Solver btSolver = new BacktrackSolver(eightQueens);
         btSolver.solve();
-        time = System.currentTimeMillis() - time;
+        btSolver.report(eightQueens);
 
-        // Solutions from solvers are actually views into the variables of the problem from index 1 onwards.
-        // If called before solve() then the previous values for the problem (potentially incorrect values) are shown.
-        System.out.println(time);
-        btSolver.report(nQueens);
-        */
-
-        NQueens eightQueens = new NQueens(10);
-        NQueens eightQueensFC = new NQueens(10);
-        Solver fcSolver = new ForwardChecker(eightQueens);
+        NQueens eightQueensFC = new NQueens(4);
+        Solver fcSolver = new ForwardChecker(eightQueensFC);
         fcSolver.solve();
-        fcSolver.report(eightQueens);
-        Solver btSolver = new BacktrackSolver(eightQueensFC);
-        btSolver.solve();
-        btSolver.report(eightQueensFC);
+        fcSolver.report(eightQueensFC);
+
+        Domain d = new Domain(4);
+        Variable v = new Variable(d);
+        System.out.println(v.currentDomain);
+        v.currentDomain.remove(new Integer(2));
+        System.out.println(v.currentDomain);
+
     }
 }

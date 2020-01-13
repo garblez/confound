@@ -17,20 +17,27 @@ public class BacktrackSolver extends Solver {
      */
     public int label(int i)
     {
+        System.out.println("btlabel: "+p.variables[i].currentDomain);
         p.consistent = false;
 
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
-        for (int j = 0; j < p.currentDomain[i].size() && !p.consistent; j++) {
-            p.variables[i] = (Integer)p.currentDomain[i].get(j);
+        for (int j = 0; j < p.variables[i].currentDomain.size() && !p.consistent; j++) {
+            //p.variables[i].value = (Integer)p.currentDomain[i].get(j);
+            p.variables[i].value = (Integer)p.variables[i].currentDomain.get(j);
             p.consistent = true;
             // Run through all previously chosen variables and check if they are all consistent with the current candidate
             // variable[i]
             for (int h = 1; h < i && p.consistent; h++) {
                 // Remove value from candidates on constraint failure
-                if (!(p.consistent = p.check(i, h)))
-                    p.currentDomain[i-1].remove((Integer)p.variables[i-1]);
+                if (!(p.consistent = p.check(i, h))) {
+                    System.out.println("REMOVE: "+p.variables[i-1].value);
+                    p.variables[i - 1].currentDomain.remove((Integer) p.variables[i - 1].value);
+                    System.out.println("btlabel: "+p.variables[i-1].currentDomain);
+                }
+                    //p.currentDomain[i-1].remove((Integer)p.variables[i-1].value);
             }
         }
+        System.out.println("btlabel after: "+p.variables[i].currentDomain);
         if (p.consistent)
             return i + 1;
         else
@@ -47,14 +54,20 @@ public class BacktrackSolver extends Solver {
      */
     public int unlabel(int i)
     {
+        System.out.println("btunlabel: "+p.variables[i].currentDomain);
         int h = i - 1;
         // Rather than store any domain set for the fake variable, we assign the domain as a null pointer and just
         // check for when we try to unlabel the first possible variable
         if (h == 0)
             return h;
-        p.currentDomain[i] = new ArrayList<>(Arrays.asList(p.domain.clone()));
-        p.currentDomain[h].remove((Integer)p.variables[h]);
-        p.consistent = !p.currentDomain[h].isEmpty();
+        //p.currentDomain[i] = p.domain.copy();
+        //p.currentDomain[h].remove((Integer)p.variables[h].value);
+        //p.consistent = !p.currentDomain[h].isEmpty();
+
+        p.variables[i].currentDomain = p.domain.copy();
+        p.variables[h].currentDomain.remove((Integer)p.variables[h].value);
+        p.consistent = !p.variables[h].currentDomain.isEmpty();
+        System.out.println("btunlabel after: "+p.variables[i].currentDomain);
         return h;
     }
 

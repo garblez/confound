@@ -26,39 +26,44 @@ public class ForwardChecker extends Solver {
 
     public boolean checkForward(int i, int j) {
         reduction = new ArrayList<>();
-        //Integer nextVariable;
+
         // Collect all conflicting values in j's current domain
-        for (int k = 0; k < p.currentDomain[j].size(); k++) {
-            p.variables[j] = p.currentDomain[j].get(k);
-            if (!p.check(i, j)) reduction.add(p.variables[j]);
+        for (int k = 0; k < p.variables[j].currentDomain.size(); k++) {
+            p.variables[j].value = p.variables[j].currentDomain.get(k);
+            if (!p.check(i, j)) reduction.add(p.variables[j].value);
         }
         // Apply filtering on j's current domain
         if (!reduction.isEmpty()) {
-            p.currentDomain[j].removeAll(reduction);
+            p.variables[j].currentDomain.removeAll(reduction);
             // Record the changes made
             reductions[j].push(reduction);
             future[i].push(j);
             past[j].push(i);
         }
-        return !p.currentDomain[j].isEmpty(); // Return false if there has been a domain wipeout for v[j]
+        return !p.variables[j].currentDomain.isEmpty(); // Return false if there has been a domain wipeout for v[j]
     }
 
     public void undoReductions(int i) {
         // Undo all reductions on domain sets caused by v[i]
         for (Integer j: future[i]) {
             reduction = reductions[j].pop();
-            p.currentDomain[j].addAll(reduction);
+            p.variables[j].currentDomain.addAll(reduction);
             // Remove duplicate entries
-            p.currentDomain[j] = new ArrayList<Integer>(new HashSet<Integer>(p.currentDomain[j]));
+            p.variables[j].currentDomain = new ArrayList<Integer>(new HashSet<Integer>(p.variables[j].currentDomain));
             past[j].pop();
         }
         future[i] = new Stack<>(); // Empty the set of future changes made by i
     }
 
     public void updatedCurrentDomain(int i) {
-        p.currentDomain[i] = new ArrayList<Integer>(Arrays.asList(p.domain.clone()));
+        // TODO: currently there is a bug with this particular function when calling p.domain.copy() -- we end up with a duplicate final solution.
+        //      Solve this!
+        ArrayList<Integer> cDomain = new ArrayList<>();
+        for (int j = 0; j < p.numVariables; j++)
+            cDomain.add(j);
+        p.variables[i].currentDomain = cDomain;
         for (ArrayList<Integer> reduction: reductions[i])
-            p.currentDomain[i].removeAll(reduction);
+            p.variables[i].currentDomain.removeAll(reduction);
     }
 
     @Override
@@ -66,13 +71,13 @@ public class ForwardChecker extends Solver {
         p.consistent = false;
 
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
-        for (int k = 0; k < p.currentDomain[i].size() && !p.consistent; k++) {
-            p.variables[i] = (Integer)p.currentDomain[i].get(k);
+        for (int k = 0; k < p.variables[i].currentDomain.size() && !p.consistent; k++) {
+            p.variables[i].value = (Integer)p.variables[i].currentDomain.get(k);
             p.consistent = true;
 
             for (int j = i+1; j < p.numVariables+1 && p.consistent; j++) {
                 if (!(p.consistent = checkForward(i, j))){
-                    p.currentDomain[i].remove((Integer)p.variables[i]);
+                    p.variables[i].currentDomain.remove((Integer)p.variables[i].value);
                     undoReductions(i);
                 }
             }
@@ -91,8 +96,8 @@ public class ForwardChecker extends Solver {
             return h;
         undoReductions(h);
         updatedCurrentDomain(i);
-        p.currentDomain[h].remove((Integer)p.variables[h]);
-        p.consistent = !p.currentDomain[h].isEmpty();
+        p.variables[h].currentDomain.remove((Integer)p.variables[h].value);
+        p.consistent = !p.variables[h].currentDomain.isEmpty();
         return h;
     }
 }
