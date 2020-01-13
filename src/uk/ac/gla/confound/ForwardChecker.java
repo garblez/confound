@@ -92,8 +92,6 @@ public class ForwardChecker extends Solver {
     @Override
     public int unlabel(int i) {
         int h = i-1;
-        if (h == 0)
-            return h;
         undoReductions(h);
         updatedCurrentDomain(i);
         p.current[h].remove(Integer.valueOf(p.variables[h].value));

@@ -50,8 +50,8 @@ public class BacktrackSolver extends Solver {
         int h = i - 1;
         // Rather than store any domain set for the fake variable, we assign the domain as a null pointer and just
         // check for when we try to unlabel the first possible variable
-        if (h == 0)
-            return h;
+        //if (h == 0)
+        //    return h;
         p.current[i] = p.domain.copy();
         p.current[h].remove(Integer.valueOf(p.variables[h].value));
         p.consistent = !p.current[h].isEmpty();

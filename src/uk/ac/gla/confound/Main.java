@@ -6,16 +6,20 @@ public class Main {
     {
 
 
-        NQueens eightQueens = new NQueens(4);
+        NQueens eightQueens = new NQueens(8);
         Solver btSolver = new BacktrackSolver(eightQueens);
         btSolver.solve();
         btSolver.report(eightQueens);
 
-        NQueens eightQueensFC = new NQueens(4);
+        NQueens eightQueensFC = new NQueens(8);
         Solver fcSolver = new ForwardChecker(eightQueensFC);
         fcSolver.solve();
         fcSolver.report(eightQueensFC);
 
+        NQueens bjQueens = new NQueens(8);
+        Solver bjSolver = new BackjumpSolver(bjQueens);
+        bjSolver.solve();
+        bjSolver.report(bjQueens);
 
     }
 }
