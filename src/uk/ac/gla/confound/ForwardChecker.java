@@ -28,28 +28,28 @@ public class ForwardChecker extends Solver {
         reduction = new ArrayList<>();
 
         // Collect all conflicting values in j's current domain
-        for (int k = 0; k < p.variables[j].currentDomain.size(); k++) {
-            p.variables[j].value = p.variables[j].currentDomain.get(k);
+        for (int k = 0; k < p.current[j].size(); k++) {
+            p.variables[j].value = p.current[j].get(k);
             if (!p.check(i, j)) reduction.add(p.variables[j].value);
         }
         // Apply filtering on j's current domain
         if (!reduction.isEmpty()) {
-            p.variables[j].currentDomain.removeAll(reduction);
+            p.current[j].removeAll(reduction);
             // Record the changes made
             reductions[j].push(reduction);
             future[i].push(j);
             past[j].push(i);
         }
-        return !p.variables[j].currentDomain.isEmpty(); // Return false if there has been a domain wipeout for v[j]
+        return !p.current[j].isEmpty(); // Return false if there has been a domain wipeout for v[j]
     }
 
     public void undoReductions(int i) {
         // Undo all reductions on domain sets caused by v[i]
         for (Integer j: future[i]) {
             reduction = reductions[j].pop();
-            p.variables[j].currentDomain.addAll(reduction);
+            p.current[j].addAll(reduction);
             // Remove duplicate entries
-            p.variables[j].currentDomain = new ArrayList<Integer>(new HashSet<Integer>(p.variables[j].currentDomain));
+            p.current[j] = new ArrayList<Integer>(new HashSet<Integer>(p.current[j]));
             past[j].pop();
         }
         future[i] = new Stack<>(); // Empty the set of future changes made by i
@@ -61,9 +61,9 @@ public class ForwardChecker extends Solver {
         ArrayList<Integer> cDomain = new ArrayList<>();
         for (int j = 0; j < p.numVariables; j++)
             cDomain.add(j);
-        p.variables[i].currentDomain = cDomain;
+        p.current[i] = cDomain;
         for (ArrayList<Integer> reduction: reductions[i])
-            p.variables[i].currentDomain.removeAll(reduction);
+            p.current[i].removeAll(reduction);
     }
 
     @Override
@@ -71,13 +71,13 @@ public class ForwardChecker extends Solver {
         p.consistent = false;
 
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
-        for (int k = 0; k < p.variables[i].currentDomain.size() && !p.consistent; k++) {
-            p.variables[i].value = (Integer)p.variables[i].currentDomain.get(k);
+        for (int k = 0; k < p.current[i].size() && !p.consistent; k++) {
+            p.variables[i].value = p.current[i].get(k);
             p.consistent = true;
 
             for (int j = i+1; j < p.numVariables+1 && p.consistent; j++) {
                 if (!(p.consistent = checkForward(i, j))){
-                    p.variables[i].currentDomain.remove((Integer)p.variables[i].value);
+                    p.current[i].remove(Integer.valueOf(p.variables[i].value));
                     undoReductions(i);
                 }
             }
@@ -96,8 +96,8 @@ public class ForwardChecker extends Solver {
             return h;
         undoReductions(h);
         updatedCurrentDomain(i);
-        p.variables[h].currentDomain.remove((Integer)p.variables[h].value);
-        p.consistent = !p.variables[h].currentDomain.isEmpty();
+        p.current[h].remove(Integer.valueOf(p.variables[h].value));
+        p.consistent = !p.current[h].isEmpty();
         return h;
     }
 }

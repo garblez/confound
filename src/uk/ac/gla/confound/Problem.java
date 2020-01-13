@@ -10,6 +10,8 @@ public abstract class Problem {
     Variable[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
     Domain domain; // Assume all integer variables have the same domain
 
+    ArrayList<Integer>[] current; // TODO: fix this in future by replacing it with Variable.currentDomain
+
     BitSet[] constraints;  // Constraint bitset for each variable
 
     List<int[]> solutions;
@@ -17,6 +19,11 @@ public abstract class Problem {
     public Problem(int numVariables) {
         // Initialise the domain
         domain = new Domain(numVariables);
+
+        current = new ArrayList[numVariables+1];
+        current[0] = new ArrayList<>();
+        for (int i = 1; i < numVariables+1; i++)
+            current[i] = domain.copy();
 
         this.numVariables = numVariables;
         variables = new Variable[this.numVariables + 1];

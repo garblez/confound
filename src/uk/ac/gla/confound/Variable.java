@@ -3,10 +3,12 @@ package uk.ac.gla.confound;
 import java.util.ArrayList;
 
 public class Variable {
-    public int value = 0;
-    public ArrayList<Integer> currentDomain = new ArrayList<>();
+    public int value;
+    public ArrayList<Integer> currentDomain;
 
     public Variable(Domain currentDomain) {
+        this.currentDomain = new ArrayList<>();
+        this.value = 0;
         for (Integer value: currentDomain.values())
             this.currentDomain.add(value);
     }

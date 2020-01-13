@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e33eb4ea-6865-431c-8073-5df3cc7567e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/BackjumpSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/BacktrackSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/BacktrackSolver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/NQueens.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/NQueens.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/Problem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/Problem.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/Solver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/Solver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/BacktrackSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/BacktrackSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Domain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Domain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/ForwardChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/ForwardChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/NQueens.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Problem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Solver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Variable.java" afterDir="false" />
@@ -119,7 +116,7 @@
       <workItem from="1576096101831" duration="3075000" />
       <workItem from="1577733014352" duration="11267000" />
       <workItem from="1578064354329" duration="13582000" />
-      <workItem from="1578945322975" duration="259000" />
+      <workItem from="1578945322975" duration="5912000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -149,28 +146,32 @@
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state x="852" y="109" key="#com.intellij.ide.util.MemberChooser/65.24.1301.744@65.24.1301.744" timestamp="1578069064383" />
-    <state width="1489" height="253" key="GridCell.Tab.0.bottom" timestamp="1578945514233">
+    <state x="1531" y="96" width="1335" height="704" key="DiffContextDialog" timestamp="1578950474669">
       <screen x="1366" y="0" width="1600" height="900" />
     </state>
-    <state width="1489" height="253" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578945514233" />
+    <state x="1531" y="96" width="1335" height="704" key="DiffContextDialog/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578950474669" />
+    <state width="1489" height="253" key="GridCell.Tab.0.bottom" timestamp="1578951266721">
+      <screen x="1366" y="0" width="1600" height="900" />
+    </state>
+    <state width="1489" height="253" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578951266721" />
     <state width="1489" height="252" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1578718482534" />
     <state width="1489" height="273" key="GridCell.Tab.0.bottom/65.24.2901.876@65.24.2901.876" timestamp="1578529235919" />
-    <state width="1489" height="253" key="GridCell.Tab.0.center" timestamp="1578945514232">
+    <state width="1489" height="253" key="GridCell.Tab.0.center" timestamp="1578951266721">
       <screen x="1366" y="0" width="1600" height="900" />
     </state>
-    <state width="1489" height="253" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578945514232" />
+    <state width="1489" height="253" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578951266721" />
     <state width="1489" height="252" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1578718482525" />
     <state width="1489" height="273" key="GridCell.Tab.0.center/65.24.2901.876@65.24.2901.876" timestamp="1578529235918" />
-    <state width="1489" height="253" key="GridCell.Tab.0.left" timestamp="1578945514232">
+    <state width="1489" height="253" key="GridCell.Tab.0.left" timestamp="1578951266721">
       <screen x="1366" y="0" width="1600" height="900" />
     </state>
-    <state width="1489" height="253" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578945514232" />
+    <state width="1489" height="253" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578951266721" />
     <state width="1489" height="252" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1578718482522" />
     <state width="1489" height="273" key="GridCell.Tab.0.left/65.24.2901.876@65.24.2901.876" timestamp="1578529235917" />
-    <state width="1489" height="253" key="GridCell.Tab.0.right" timestamp="1578945514233">
+    <state width="1489" height="253" key="GridCell.Tab.0.right" timestamp="1578951266721">
       <screen x="1366" y="0" width="1600" height="900" />
     </state>
-    <state width="1489" height="253" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578945514233" />
+    <state width="1489" height="253" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578951266721" />
     <state width="1489" height="252" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1578718482532" />
     <state width="1489" height="273" key="GridCell.Tab.0.right/65.24.2901.876@65.24.2901.876" timestamp="1578529235919" />
     <state width="1489" height="252" key="GridCell.Tab.1.bottom" timestamp="1578718482556">
@@ -308,18 +309,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Problem.java</url>
-          <line>23</line>
+          <line>30</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Problem.java</url>
-          <line>27</line>
+          <line>34</line>
           <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Domain.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
@@ -371,7 +367,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/BacktrackSolver.java</url>
-          <line>54</line>
+          <line>47</line>
           <properties class="uk.ac.gla.confound.BacktrackSolver" method="unlabel">
             <option name="EMULATED" value="true" />
           </properties>
@@ -379,19 +375,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/BacktrackSolver.java</url>
-          <line>17</line>
+          <line>15</line>
           <properties class="uk.ac.gla.confound.BacktrackSolver" method="label">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="96" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/Domain.java</url>
-          <line>26</line>
-          <properties class="uk.ac.gla.confound.Domain" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="99" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

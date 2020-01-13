@@ -16,11 +16,6 @@ public class Main {
         fcSolver.solve();
         fcSolver.report(eightQueensFC);
 
-        Domain d = new Domain(4);
-        Variable v = new Variable(d);
-        System.out.println(v.currentDomain);
-        v.currentDomain.remove(new Integer(2));
-        System.out.println(v.currentDomain);
 
     }
 }
