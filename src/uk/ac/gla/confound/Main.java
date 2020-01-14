@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args)
     {
 
-
+/*
         NQueens eightQueens = new NQueens(8);
         Solver btSolver = new BacktrackSolver(eightQueens);
         btSolver.solve();
@@ -21,5 +21,11 @@ public class Main {
         bjSolver.solve();
         bjSolver.report(bjQueens);
 
+ */
+
+        NQueens cbjQueens = new NQueens(4);
+        Solver cbjSolver = new ConflictBackjumpSolver(cbjQueens);
+        cbjSolver.solve();
+        cbjSolver.report(cbjQueens);
     }
 }

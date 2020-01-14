@@ -27,7 +27,8 @@ public abstract class Problem {
 
         this.numVariables = numVariables;
         variables = new Variable[this.numVariables + 1];
-        for (int i = 0; i < this.numVariables + 1; i++)
+
+        for (int i = 0; i < this.numVariables+1; i++)
             variables[i] = new Variable(domain);
 
 
