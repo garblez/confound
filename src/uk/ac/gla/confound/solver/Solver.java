@@ -12,8 +12,9 @@ import java.util.Arrays;
  * ArrayList previousValues, a list of the previous values found
  */
 public abstract class Solver implements SolverMethods {
-    Problem p;
-    Status status;
+    static String NAME = "Base Solver";
+    public Problem p;
+    public Status status;
 
     int numIterations;
     int numSolutions;
@@ -69,7 +70,7 @@ public abstract class Solver implements SolverMethods {
     public void report(Problem p)
     {
 
-        System.out.println("Status report");
+        System.out.println("Status report for "+NAME);
         System.out.println("#Iterations: "+numIterations);
         System.out.println("Duration: " + duration + "(ms)");
         System.out.println("Backtracks: " + backtracks);

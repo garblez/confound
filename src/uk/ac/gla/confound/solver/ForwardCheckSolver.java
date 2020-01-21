@@ -1,4 +1,6 @@
-package uk.ac.gla.confound;
+package uk.ac.gla.confound.solver;
+
+import uk.ac.gla.confound.Problem;
 
 import java.util.*;
 
@@ -6,6 +8,8 @@ public class ForwardChecker extends Solver {
 
     public ForwardChecker(Problem p) {
         super(p);
+        NAME = "ForwardCheckSolver";
+
         future = new Stack[p.numVariables+1];
         past = new Stack[p.numVariables+1];
         reductions = new Stack[p.numVariables+1];
