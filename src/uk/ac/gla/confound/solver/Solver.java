@@ -1,7 +1,10 @@
-package uk.ac.gla.confound;
+package uk.ac.gla.confound.solver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import uk.ac.gla.confound.NQueens;
+import uk.ac.gla.confound.Problem;
+import uk.ac.gla.confound.Status;
+
+import java.util.Scanner;
 
 /**
  * Abstract base class Solver defines common variables and methods between all extending solvers such as
@@ -12,7 +15,7 @@ import java.util.Arrays;
  * ArrayList previousValues, a list of the previous values found
  */
 public abstract class Solver implements SolverMethods {
-    static String NAME = "Base Solver";
+    public static String NAME = "Base Solver";
     public Problem p;
     public Status status;
 
@@ -63,10 +66,6 @@ public abstract class Solver implements SolverMethods {
         duration = System.currentTimeMillis() - duration;
     }
 
-
-
-
-
     public void report(Problem p)
     {
 
@@ -81,11 +80,11 @@ public abstract class Solver implements SolverMethods {
             for (int x : arr) {
                 System.out.print(x + ", ");
             }
-            System.out.println("]");
+            System.out.println("\b\b]");
         }
+        System.out.println("=========================");
 
     }
-
 
     public String solution()
     {
@@ -100,4 +99,5 @@ public abstract class Solver implements SolverMethods {
         s.append(this.p.variables[this.p.variables.length-1]+"]");
         return s.toString();
     }
+
 }

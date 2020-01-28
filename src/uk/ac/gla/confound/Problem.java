@@ -4,17 +4,17 @@ package uk.ac.gla.confound;
 import java.util.*;
 
 public abstract class Problem {
-    boolean consistent;
-    int numVariables;
+    public boolean consistent;
+    public int numVariables;
 
-    Variable[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
-    Domain domain; // Assume all integer variables have the same domain
+    public Variable[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
+    public Domain domain; // Assume all integer variables have the same domain
 
-    ArrayList<Integer>[] current; // TODO: fix this in future by replacing it with Variable.currentDomain
+    public ArrayList<Integer>[] current; // TODO: fix this in future by replacing it with Variable.currentDomain
 
-    BitSet[] constraints;  // Constraint bitset for each variable
+    public BitSet[] constraints;  // Constraint for each variable pair
 
-    List<int[]> solutions;
+    public List<int[]> solutions;
 
     public Problem(int numVariables) {
         // Initialise the domain
@@ -32,7 +32,7 @@ public abstract class Problem {
             variables[i] = new Variable(domain);
 
 
-        // Initialise a has-constraint table
+        // Initialise a constraint table: by default, no constraint exists and hence is a null value
         constraints = new BitSet[this.numVariables];
         for (int i = 0; i < this.numVariables; i++)
             constraints[i] = new BitSet(this.numVariables);

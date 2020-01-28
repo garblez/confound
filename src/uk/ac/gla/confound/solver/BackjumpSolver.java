@@ -1,4 +1,9 @@
-package uk.ac.gla.confound;
+package uk.ac.gla.confound.solver;
+
+import uk.ac.gla.confound.NQueens;
+import uk.ac.gla.confound.Problem;
+
+import java.util.Scanner;
 
 public class BackjumpSolver extends Solver {
 
@@ -54,5 +59,21 @@ public class BackjumpSolver extends Solver {
         p.consistent = !p.current[h].isEmpty();
 
         return h;
+    }
+
+    public static void main(String... args) {
+        int n = 0;
+
+        if (args.length > 1 && args[1].startsWith("-n=")) {
+            n = new Scanner(args[1]).nextInt();
+        } else {
+            System.out.println("Usage: Solver.java -n=[NUM]");
+        }
+
+
+        Problem nQueens = new NQueens(n);
+        Solver solver = new BackjumpSolver(nQueens);
+        solver.solve();
+        solver.report(nQueens);
     }
 }

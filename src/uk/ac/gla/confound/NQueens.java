@@ -1,22 +1,16 @@
 package uk.ac.gla.confound;
 
 
+import uk.ac.gla.confound.solver.*;
+
+
 public class NQueens extends Problem {
     public NQueens(int numVars) {
         super(numVars);
-        /*
-            Constraint?
-                v0  v1  v2  v3  ...
-            v0  0   1   1   1
-            v1  1   0   1   1
-            v2  1   1   0   1
-            v3  1   1   1   0
-            .
-            .
-         */
+
         for (int i = 0; i < this.numVariables; i++) {
             for (int j = 0; j < this.numVariables; j++) {
-                constraints[i].set(j, i != j);  // Let there be a constraint between all different variables
+                constraints[i].set(j, i != j);
             }
         }
     }
@@ -33,8 +27,41 @@ public class NQueens extends Problem {
     {
         if (constraints[i-1].get(h-1))
             return !variables[i].equals(variables[h]) && Math.abs(variables[i].value - variables[h].value) != Math.abs(i - h);
-        return true; // No constraint between i and h so any value either hold works with the other.
+        return true;
     }
 
 
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("USAGE: NQueens [Solver] [Num Queens] ");
+            System.out.println("BacktrackSolver, ForwardCheckSolver, BackjumpSolver, ConflictBackjumpSolver, DynamicBacktrackSolver");
+        } else {
+            Problem nQueens = new NQueens(Integer.parseInt(args[1]));
+            Solver s;
+            switch (args[0]) {
+                case "ForwardCheckSolver":
+                    s = new ForwardCheckSolver(nQueens);
+                    break;
+                case "BackjumpSolver":
+                    s = new BackjumpSolver(nQueens);
+                    break;
+                case "ConflictBackjumpSolver":
+                    s = new ConflictBackjumpSolver(nQueens);
+                    break;
+                /*case "DynamicBacktrackSolver":
+                    s = new DynamicBacktrackSolver();
+                    break;
+
+                 */
+                case "BacktrackSolver":
+                    // FALL-THROUGH
+                default:
+                    s = new BacktrackSolver(nQueens);
+
+            }
+            s.solve();
+            s.report(nQueens);
+        }
+    }
 }

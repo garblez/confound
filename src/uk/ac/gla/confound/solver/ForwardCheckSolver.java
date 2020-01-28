@@ -1,30 +1,27 @@
 package uk.ac.gla.confound.solver;
 
+import uk.ac.gla.confound.NQueens;
 import uk.ac.gla.confound.Problem;
 
 import java.util.*;
 
-public class ForwardChecker extends Solver {
+public class ForwardCheckSolver extends Solver {
 
-    public ForwardChecker(Problem p) {
+    public ForwardCheckSolver(Problem p) {
         super(p);
         NAME = "ForwardCheckSolver";
 
         future = new Stack[p.numVariables+1];
-        past = new Stack[p.numVariables+1];
         reductions = new Stack[p.numVariables+1];
 
         for (int i = 0; i < p.numVariables+1; i++) {
             future[i] = new Stack<Integer>();
-            past[i] = new Stack<Integer>();
-            past[i].push(0);
             reductions[i] = new Stack<ArrayList<Integer>>();
         }
 
     }
 
     Stack<Integer>[] future;
-    Stack<Integer>[] past;
     Stack<ArrayList<Integer>>[] reductions;
     ArrayList<Integer> reduction;
 
@@ -42,7 +39,6 @@ public class ForwardChecker extends Solver {
             // Record the changes made
             reductions[j].push(reduction);
             future[i].push(j);
-            past[j].push(i);
         }
         return !p.current[j].isEmpty(); // Return false if there has been a domain wipeout for v[j]
     }
@@ -52,20 +48,15 @@ public class ForwardChecker extends Solver {
         for (Integer j: future[i]) {
             reduction = reductions[j].pop();
             p.current[j].addAll(reduction);
-            // Remove duplicate entries
-            p.current[j] = new ArrayList<Integer>(new HashSet<Integer>(p.current[j]));
-            past[j].pop();
         }
         future[i] = new Stack<>(); // Empty the set of future changes made by i
     }
 
     public void updatedCurrentDomain(int i) {
-        // TODO: currently there is a bug with this particular function when calling p.domain.copy() -- we end up with a duplicate final solution.
-        //      Solve this!
-        ArrayList<Integer> cDomain = new ArrayList<>();
-        for (int j = 0; j < p.numVariables; j++)
-            cDomain.add(j);
-        p.current[i] = cDomain;
+
+        p.current[i].clear();
+        p.current[i] = p.domain.copy();
+
         for (ArrayList<Integer> reduction: reductions[i])
             p.current[i].removeAll(reduction);
     }
@@ -73,16 +64,18 @@ public class ForwardChecker extends Solver {
     @Override
     public int label(int i) {
         p.consistent = false;
+        ArrayList<Integer> dom = (ArrayList<Integer>) p.current[i].clone();
 
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
-        for (int k = 0; k < p.current[i].size() && !p.consistent; k++) {
-            p.variables[i].value = p.current[i].get(k);
+        for (int k = 0; k < dom.size() && !p.consistent; k++) {
+            p.variables[i].value = dom.get(k);
             p.consistent = true;
 
             for (int j = i+1; j < p.numVariables+1 && p.consistent; j++) {
                 if (!(p.consistent = checkForward(i, j))){
                     p.current[i].remove(Integer.valueOf(p.variables[i].value));
                     undoReductions(i);
+
                 }
             }
         }
@@ -102,4 +95,21 @@ public class ForwardChecker extends Solver {
         p.consistent = !p.current[h].isEmpty();
         return h;
     }
+
+    public static void main(String... args) {
+        int n = 0;
+
+        if (args.length > 1 && args[1].startsWith("-n=")) {
+            n = new Scanner(args[1]).nextInt();
+        } else {
+            System.out.println("Usage: Solver.java -n=[NUM]");
+        }
+
+
+        Problem nQueens = new NQueens(n);
+        Solver solver = new ForwardCheckSolver(nQueens);
+        solver.solve();
+        solver.report(nQueens);
+    }
+
 }

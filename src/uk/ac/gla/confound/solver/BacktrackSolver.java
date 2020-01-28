@@ -1,5 +1,10 @@
-package uk.ac.gla.confound;
+package uk.ac.gla.confound.solver;
 
+
+import uk.ac.gla.confound.NQueens;
+import uk.ac.gla.confound.Problem;
+
+import java.util.Scanner;
 
 public class BacktrackSolver extends Solver {
 
@@ -58,5 +63,21 @@ public class BacktrackSolver extends Solver {
         return h;
     }
 
+
+    public static void main(String... args) {
+        int n = 0;
+
+        if (args.length > 1 && args[1].startsWith("-n=")) {
+            n = new Scanner(args[1]).nextInt();
+        } else {
+            System.out.println("Usage: Solver.java -n=[NUM]");
+        }
+
+
+        Problem nQueens = new NQueens(n);
+        Solver solver = new BacktrackSolver(nQueens);
+        solver.solve();
+        solver.report(nQueens);
+    }
 
 }

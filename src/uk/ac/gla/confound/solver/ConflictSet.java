@@ -1,4 +1,4 @@
-package uk.ac.gla.confound;
+package uk.ac.gla.confound.solver;
 
 import java.util.HashSet;
 import java.util.Set;

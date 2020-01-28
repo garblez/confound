@@ -1,4 +1,4 @@
-package uk.ac.gla.confound;
+package uk.ac.gla.confound.solver;
 
 public interface SolverMethods {
     int label(int i);
