@@ -1,4 +1,4 @@
-package uk.ac.gla.confound.solver;
+package uk.ac.gla.confound;
 
 import uk.ac.gla.confound.Variable;
 

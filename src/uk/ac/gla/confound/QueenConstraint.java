@@ -1,10 +1,8 @@
-package uk.ac.gla.confound.solver;
+package uk.ac.gla.confound;
 
-import uk.ac.gla.confound.Variable;
+public class QueenConstraint extends BaseConstraint {
 
-public class NQueenConstraint extends BaseConstraint {
-
-    public NQueenConstraint(Variable[] vars) {
+    public QueenConstraint(Variable[] vars) {
         super(vars);
     }
 
