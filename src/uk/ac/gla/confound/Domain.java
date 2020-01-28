@@ -1,8 +1,7 @@
 package uk.ac.gla.confound;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
 public class Domain {
     private int[] values;
@@ -11,6 +10,18 @@ public class Domain {
         this.values = new int[numValues];
         for (int i = 0; i < numValues; i++)
             this.values[i] = i;
+    }
+
+    public Domain(int lwb, int upb) {
+        this.values = new int[upb-lwb+1];
+        for (int i = lwb; i <= upb; i++)
+            this.values[i-lwb] = i;
+    }
+
+    public Domain(Set<Integer> values) {
+        this.values = new int[values.size()];
+        for (int i = 0; i < this.values.length; i++)
+            this.values[i] = (int)values.toArray()[i];
     }
 
     public int[] values() {

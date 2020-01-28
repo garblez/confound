@@ -10,7 +10,7 @@ public abstract class Problem {
     public Variable[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
     public Domain domain; // Assume all integer variables have the same domain
 
-    public ArrayList<Integer>[] current; // TODO: fix this in future by replacing it with Variable.currentDomain
+    public ArrayList[] current; // TODO: fix this in future by replacing it with Variable.currentDomain
 
     public BitSet[] constraints;  // Constraint for each variable pair
 
@@ -21,7 +21,7 @@ public abstract class Problem {
         domain = new Domain(numVariables);
 
         current = new ArrayList[numVariables+1];
-        current[0] = new ArrayList<>();
+        current[0] = new ArrayList();
         for (int i = 1; i < numVariables+1; i++)
             current[i] = domain.copy();
 
