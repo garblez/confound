@@ -1,10 +1,6 @@
 package uk.ac.gla.confound.solver;
 
-import uk.ac.gla.confound.NQueens;
-import uk.ac.gla.confound.Problem;
-import uk.ac.gla.confound.Status;
-
-import java.util.Scanner;
+import uk.ac.gla.confound.problem.Problem;
 
 /**
  * Abstract base class Solver defines common variables and methods between all extending solvers such as

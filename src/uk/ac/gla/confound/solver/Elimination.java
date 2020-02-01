@@ -1,6 +1,6 @@
 package uk.ac.gla.confound.solver;
 
-import uk.ac.gla.confound.Variable;
+import uk.ac.gla.confound.problem.Variable;
 
 import java.util.Map;
 import java.util.Set;

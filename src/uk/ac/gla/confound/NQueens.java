@@ -1,6 +1,9 @@
 package uk.ac.gla.confound;
 
 
+import uk.ac.gla.confound.constraint.Constraint;
+import uk.ac.gla.confound.constraint.IndexPair;
+import uk.ac.gla.confound.problem.Problem;
 import uk.ac.gla.confound.solver.*;
 
 
@@ -10,24 +13,10 @@ public class NQueens extends Problem {
 
         for (int i = 0; i < this.numVariables; i++) {
             for (int j = 0; j < this.numVariables; j++) {
-                constraints[i].set(j, i != j);
+                if (i != j)
+                    constraints.putIfAbsent(new IndexPair(i, j), new QueenConstraint(this, i, j));
             }
         }
-    }
-
-    /**
-     * Check tells if the constraint between variable i and variable h holds given their current values.
-     * Right now, this is just one condition for all constraints: later, we may be able to map variable sets to
-     * constraints and check those constraint's individual conditions.
-     * @param i The current variable's index
-     * @param h The preceding variable's index
-     * @return  true if the constraint between variable i and variable h holds otherwise false
-     */
-    public boolean check(int i, int h)
-    {
-        if (constraints[i-1].get(h-1))
-            return !variables[i].equals(variables[h]) && Math.abs(variables[i].value - variables[h].value) != Math.abs(i - h);
-        return true;
     }
 
 
@@ -62,6 +51,19 @@ public class NQueens extends Problem {
             }
             s.solve();
             s.report(nQueens);
+        }
+    }
+
+    public static class QueenConstraint extends Constraint {
+
+        public QueenConstraint(Problem p, int i, int j) {
+            super(p, i, j);
+        }
+
+        @Override
+        public boolean check() {
+            return !p.variables[i].equals(p.variables[j])
+                    && Math.abs(p.variables[i].value - p.variables[j].value) != Math.abs(i - j);
         }
     }
 }

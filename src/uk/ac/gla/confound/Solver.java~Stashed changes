@@ -1,5 +1,0 @@
-package uk.ac.gla.confound;
-
-public abstract class Solver implements SolverMethods {
-    Problem p;
-}

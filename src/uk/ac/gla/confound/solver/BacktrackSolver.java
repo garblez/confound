@@ -2,7 +2,8 @@ package uk.ac.gla.confound.solver;
 
 
 import uk.ac.gla.confound.NQueens;
-import uk.ac.gla.confound.Problem;
+import uk.ac.gla.confound.problem.Problem;
+import uk.ac.gla.confound.problem.Variable;
 
 import java.util.Scanner;
 
@@ -37,6 +38,11 @@ public class BacktrackSolver extends Solver {
                 }
             }
         }
+
+        for (Variable var: p.variables)
+            System.out.print(var.value +", ");
+        System.out.println();
+
         if (p.consistent)
             return i + 1;
         else

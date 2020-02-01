@@ -3,6 +3,8 @@ package uk.ac.gla.confound;
 
 import uk.ac.gla.confound.solver.*;
 
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args)
     {
@@ -15,6 +17,7 @@ public class Main {
         btSolver.solve();
         btSolver.report(eightQueens);
 
+        /*
         NQueens eightQueensFC = new NQueens(N);
         Solver fcSolver = new ForwardCheckSolver(eightQueensFC);
         fcSolver.solve();
@@ -31,5 +34,13 @@ public class Main {
         Solver cbjSolver = new ConflictBackjumpSolver(cbjQueens);
         cbjSolver.solve();
         cbjSolver.report(cbjQueens);
+
+         */
+
+        eightQueens.constraints.forEach(
+                (i, c) ->
+                        System.out.println(i+": "
+                                + "\t"+c.check())
+        );
     }
 }

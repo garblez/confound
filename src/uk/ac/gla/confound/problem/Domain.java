@@ -1,4 +1,4 @@
-package uk.ac.gla.confound;
+package uk.ac.gla.confound.problem;
 
 import java.util.ArrayList;
 import java.util.Set;

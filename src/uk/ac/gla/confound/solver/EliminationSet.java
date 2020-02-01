@@ -1,12 +1,5 @@
 package uk.ac.gla.confound.solver;
 
-import uk.ac.gla.confound.Variable;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 public class EliminationSet {
     Elimination[] explanation;
 

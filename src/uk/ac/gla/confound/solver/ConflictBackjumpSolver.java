@@ -1,7 +1,7 @@
 package uk.ac.gla.confound.solver;
 
 import uk.ac.gla.confound.NQueens;
-import uk.ac.gla.confound.Problem;
+import uk.ac.gla.confound.problem.Problem;
 
 import java.util.Scanner;
 
