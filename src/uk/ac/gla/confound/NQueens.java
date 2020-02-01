@@ -4,6 +4,7 @@ package uk.ac.gla.confound;
 import uk.ac.gla.confound.constraint.Constraint;
 import uk.ac.gla.confound.constraint.IndexPair;
 import uk.ac.gla.confound.problem.Problem;
+import uk.ac.gla.confound.problem.Variable;
 import uk.ac.gla.confound.solver.*;
 
 
@@ -17,6 +18,9 @@ public class NQueens extends Problem {
                     constraints.putIfAbsent(new IndexPair(i, j), new QueenConstraint(this, i, j));
             }
         }
+
+        System.out.println("Initialising constraint table");
+        constraints.forEach((p, c) -> System.out.println(p.toString()));
     }
 
 
@@ -56,14 +60,18 @@ public class NQueens extends Problem {
 
     public static class QueenConstraint extends Constraint {
 
+        Variable var0, var1;
+
         public QueenConstraint(Problem p, int i, int j) {
             super(p, i, j);
+            var0 = p.variables[i];
+            var1 = p.variables[j];
         }
 
         @Override
         public boolean check() {
-            return !p.variables[i].equals(p.variables[j])
-                    && Math.abs(p.variables[i].value - p.variables[j].value) != Math.abs(i - j);
+            return !var0.equals(var1)
+                    && Math.abs(var0.value - var1.value) != Math.abs(i - j);
         }
     }
 }

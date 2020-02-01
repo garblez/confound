@@ -67,7 +67,7 @@ public abstract class Solver implements SolverMethods {
 
         System.out.println("Status report for "+NAME);
         System.out.println("#Iterations: "+numIterations);
-        System.out.println("Duration: " + duration + "(ms)");
+        System.out.println("Duration: " + 0.001*duration + "(s)");
         System.out.println("Backtracks: " + backtracks);
         System.out.println("#Solutions: "+numSolutions);
         System.out.println("Solutions are as follows\n=========================");

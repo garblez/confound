@@ -33,14 +33,7 @@ public class Main {
         NQueens cbjQueens = new NQueens(N);
         Solver cbjSolver = new ConflictBackjumpSolver(cbjQueens);
         cbjSolver.solve();
-        cbjSolver.report(cbjQueens);
+        cbjSolver.report(cbjQueens);*/
 
-         */
-
-        eightQueens.constraints.forEach(
-                (i, c) ->
-                        System.out.println(i+": "
-                                + "\t"+c.check())
-        );
     }
 }

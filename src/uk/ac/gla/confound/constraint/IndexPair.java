@@ -1,7 +1,7 @@
 package uk.ac.gla.confound.constraint;
 
 public class IndexPair {
-    int first, second;
+    public int first, second;
 
     // (Smallest, largest)
     public IndexPair(int fst, int snd)
@@ -17,7 +17,10 @@ public class IndexPair {
 
     @Override
     public boolean equals(Object o) {
-        return o instanceof IndexPair && ((IndexPair) o).first == this.first && ((IndexPair) o).second == this.second;
+        return o instanceof IndexPair && (
+                ((IndexPair) o).first == this.first && ((IndexPair) o).second == this.second
+                || ((IndexPair) o).second == this.first && ((IndexPair) o).first == this.second
+                );
     }
 
 

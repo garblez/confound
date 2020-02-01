@@ -2,6 +2,7 @@ package uk.ac.gla.confound.solver;
 
 
 import uk.ac.gla.confound.NQueens;
+import uk.ac.gla.confound.constraint.IndexPair;
 import uk.ac.gla.confound.problem.Problem;
 import uk.ac.gla.confound.problem.Variable;
 
@@ -33,15 +34,13 @@ public class BacktrackSolver extends Solver {
             // variable[i]
             for (int h = 1; h < i && p.consistent; h++) {
                 // Remove value from candidates on constraint failure
+                System.out.println("Checking for " + i +", "+h+"\t" + "present?="+p.constraints.containsKey(new IndexPair(i, h))+"\t"+
+                        p.variables[i].value+ " != "+p.variables[h].value+"\t"+p.check(i,h));
                 if (!(p.consistent = p.check(i, h))) {
                     p.current[i-1].remove(Integer.valueOf(p.variables[i-1].value));
                 }
             }
         }
-
-        for (Variable var: p.variables)
-            System.out.print(var.value +", ");
-        System.out.println();
 
         if (p.consistent)
             return i + 1;
