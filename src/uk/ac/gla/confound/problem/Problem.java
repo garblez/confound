@@ -17,7 +17,7 @@ public abstract class Problem {
     public ArrayList<Integer>[] current;
 
 
-    public Map<IndexPair, Constraint> constraints; // Constraint for each variable pair
+    public Constraint[][] constraints; // Constraint for each variable pair
 
     public List<int[]> solutions;
 
@@ -39,7 +39,7 @@ public abstract class Problem {
 
         // Initialise a constraint mapping such that the pair of indices of the concerned variables map to the
         // binary constraint they both share
-        constraints = new HashMap<>();
+        constraints = new Constraint[numVariables][numVariables];
 
         solutions = new ArrayList<>();
     }
@@ -65,7 +65,8 @@ public abstract class Problem {
 
     public boolean check(int i, int j)
     {
-        return constraints.getOrDefault(new IndexPair(i, j), new AlwaysTrueConstraint()).check();
+        //System.out.println("v["+i+"] v["+j+"]\t"+this.variables[i].value+" "+this.variables[j].value+"\t"+this.constraints[i-1][j-1].check());
+        return constraints[i-1][j-1].check();
     }
 
     public void printAll()

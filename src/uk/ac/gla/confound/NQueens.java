@@ -1,10 +1,9 @@
 package uk.ac.gla.confound;
 
 
+import uk.ac.gla.confound.constraint.AlwaysTrueConstraint;
 import uk.ac.gla.confound.constraint.Constraint;
-import uk.ac.gla.confound.constraint.IndexPair;
 import uk.ac.gla.confound.problem.Problem;
-import uk.ac.gla.confound.problem.Variable;
 import uk.ac.gla.confound.solver.*;
 
 
@@ -14,13 +13,14 @@ public class NQueens extends Problem {
 
         for (int i = 0; i < this.numVariables; i++) {
             for (int j = 0; j < this.numVariables; j++) {
-                if (i != j)
-                    constraints.putIfAbsent(new IndexPair(i, j), new QueenConstraint(this, i, j));
+                if (i != j) {
+                    constraints[i][j] = new QueenConstraint(this, i, j);
+                } else {
+                    constraints[i][j] = new AlwaysTrueConstraint();
+                }
             }
         }
 
-        System.out.println("Initialising constraint table");
-        constraints.forEach((p, c) -> System.out.println(p.toString()));
     }
 
 
@@ -59,19 +59,19 @@ public class NQueens extends Problem {
     }
 
     public static class QueenConstraint extends Constraint {
-
-        Variable var0, var1;
+        int ix0;
+        int ix1;
 
         public QueenConstraint(Problem p, int i, int j) {
             super(p, i, j);
-            var0 = p.variables[i];
-            var1 = p.variables[j];
+            ix0 = i;
+            ix1 = j;
         }
 
         @Override
         public boolean check() {
             return !var0.equals(var1)
-                    && Math.abs(var0.value - var1.value) != Math.abs(i - j);
+                    && Math.abs(var0.value - var1.value) != Math.abs(ix0 - ix1);
         }
     }
 }

@@ -17,4 +17,5 @@ public class Variable {
     public boolean equals(Object o) {
         return o instanceof Variable && value == ((Variable) o).value && currentDomain.equals(((Variable) o).currentDomain);
     }
+
 }

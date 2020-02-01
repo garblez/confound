@@ -17,7 +17,7 @@ public class Main {
         btSolver.solve();
         btSolver.report(eightQueens);
 
-        /*
+
         NQueens eightQueensFC = new NQueens(N);
         Solver fcSolver = new ForwardCheckSolver(eightQueensFC);
         fcSolver.solve();
@@ -33,7 +33,7 @@ public class Main {
         NQueens cbjQueens = new NQueens(N);
         Solver cbjSolver = new ConflictBackjumpSolver(cbjQueens);
         cbjSolver.solve();
-        cbjSolver.report(cbjQueens);*/
+        cbjSolver.report(cbjQueens);
 
     }
 }

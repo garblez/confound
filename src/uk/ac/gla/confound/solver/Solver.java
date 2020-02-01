@@ -36,6 +36,14 @@ public abstract class Solver implements SolverMethods {
         int i = 1;
 
         while (status == Status.UNKNOWN) {
+
+            for (int x = 1; x < p.numVariables+1; x++)
+                if (x==i)
+                    System.out.print("\033[1m"+p.variables[x].value+"\033[0m, ");
+                else
+                    System.out.print(p.variables[x].value+", ");
+            System.out.println("\n"+p.consistent);
+
             if (p.consistent) {
                 i = label(i);
             } else {
@@ -56,6 +64,7 @@ public abstract class Solver implements SolverMethods {
                 p.consistent = false;
             } else if (i == 0)
                 status = Status.IMPOSSIBLE;
+
 
             ++numIterations;
         }
