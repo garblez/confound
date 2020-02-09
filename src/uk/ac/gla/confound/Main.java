@@ -1,39 +1,20 @@
 package uk.ac.gla.confound;
 
 
+import uk.ac.gla.confound.examples.CrystalMaze;
 import uk.ac.gla.confound.examples.NQueens;
+import uk.ac.gla.confound.problem.Problem;
 import uk.ac.gla.confound.solver.*;
 
 
 public class Main {
     public static void main(String[] args)
     {
-        int N = 4;
+        Problem p = new CrystalMaze(8);
+        Solver btS = new BackjumpSolver(p);
+        btS.solve();
+        btS.report(p);
 
-
-
-        NQueens eightQueens = new NQueens(N);
-        Solver btSolver = new BacktrackSolver(eightQueens);
-        btSolver.solve();
-        btSolver.report(eightQueens);
-
-
-        NQueens eightQueensFC = new NQueens(N);
-        Solver fcSolver = new ForwardCheckSolver(eightQueensFC);
-        fcSolver.solve();
-        fcSolver.report(eightQueensFC);
-
-        NQueens bjQueens = new NQueens(N);
-        Solver bjSolver = new BackjumpSolver(bjQueens);
-        bjSolver.solve();
-        bjSolver.report(bjQueens);
-
-
-
-        NQueens cbjQueens = new NQueens(N);
-        Solver cbjSolver = new ConflictBackjumpSolver(cbjQueens);
-        cbjSolver.solve();
-        cbjSolver.report(cbjQueens);
 
     }
 }

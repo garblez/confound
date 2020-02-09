@@ -10,18 +10,18 @@ public abstract class Problem {
     public int numVariables;
 
     public Variable[] variables; // For each variables[i] := queen row |-> col, of size numVar+1 as variables[0] is always null
-    public Domain domain; // Assume all integer variables have the same domain
+    //public Domain domain; // Assume all integer variables have the same domain
 
     public Constraint[][] constraints; // Constraint for each variable pair
 
     public List<int[]> solutions;
 
     public Problem(Domain dom, int numVariables){
-        domain = dom;
+        //domain = dom;
         this.numVariables = numVariables;
         variables = new Variable[numVariables+1];
         for (int i = 0; i < this.numVariables+1; i++)
-            variables[i] = new Variable(domain, i);
+            variables[i] = new Variable(dom, i);
 
         constraints = new Constraint[numVariables+1][numVariables+1];
         solutions = new ArrayList<>();
@@ -29,7 +29,7 @@ public abstract class Problem {
 
     public Problem(int numVariables) {
         // Initialise the domain
-        domain = new Domain(numVariables);
+        Domain domain = new Domain(numVariables);
 
         this.numVariables = numVariables;
         variables = new Variable[this.numVariables + 1];

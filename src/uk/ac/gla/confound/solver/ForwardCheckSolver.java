@@ -54,7 +54,7 @@ public class ForwardCheckSolver extends Solver {
     public void updatedCurrentDomain(int i) {
 
         p.variables[i].currentDomain.clear();
-        p.variables[i].currentDomain = p.domain.copy();
+        p.variables[i].currentDomain = p.variables[i].domain.copy();
 
         for (ArrayList<Integer> reduction: reductions[i])
             p.variables[i].currentDomain.removeAll(reduction);

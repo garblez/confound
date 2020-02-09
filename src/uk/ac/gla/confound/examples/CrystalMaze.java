@@ -5,14 +5,11 @@ import uk.ac.gla.confound.constraint.DistanceConstraint;
 import uk.ac.gla.confound.constraint.NeqConstraint;
 import uk.ac.gla.confound.problem.Domain;
 import uk.ac.gla.confound.problem.Problem;
-import uk.ac.gla.confound.problem.Variable;
 import uk.ac.gla.confound.solver.BacktrackSolver;
-import uk.ac.gla.confound.solver.ForwardCheckSolver;
 import uk.ac.gla.confound.solver.Solver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class CrystalMaze extends Problem {
 

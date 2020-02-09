@@ -49,9 +49,9 @@ public class BackjumpSolver extends Solver {
 
         for (int j = h+1; j < i; j++) {
             maxCheck[j-1] = 0;
-            p.variables[j].currentDomain = p.domain.copy();
+            p.variables[j].currentDomain = p.variables[j].domain.copy();
         }
-        p.variables[i].currentDomain = p.domain.copy();
+        p.variables[i].currentDomain = p.variables[i].domain.copy();
         p.variables[h].currentDomain.remove(Integer.valueOf(p.variables[h].value));
         p.consistent = !p.variables[h].currentDomain.isEmpty();
 

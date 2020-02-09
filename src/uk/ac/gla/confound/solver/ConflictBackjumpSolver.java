@@ -42,11 +42,11 @@ public class ConflictBackjumpSolver extends Solver {
         conflicts.update(h, i);
 
         for (int j = h+1; j < i; j++)
-            p.variables[j].currentDomain = p.domain.copy();
+            p.variables[j].currentDomain = p.variables[j].domain.copy();
 
         // Rather than store any domain set for the fake variable, we assign the domain as a null pointer and just
         // check for when we try to unlabel the first possible variable
-        p.variables[i].currentDomain = p.domain.copy();
+        p.variables[i].currentDomain = p.variables[i].domain.copy();
         p.variables[h].currentDomain.remove(Integer.valueOf(p.variables[h].value));
         p.consistent = !p.variables[h].currentDomain.isEmpty();
 
