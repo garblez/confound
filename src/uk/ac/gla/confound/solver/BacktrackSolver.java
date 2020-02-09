@@ -1,12 +1,7 @@
 package uk.ac.gla.confound.solver;
 
-
-import uk.ac.gla.confound.NQueens;
-import uk.ac.gla.confound.constraint.IndexPair;
 import uk.ac.gla.confound.problem.Problem;
-import uk.ac.gla.confound.problem.Variable;
 
-import java.util.Scanner;
 
 public class BacktrackSolver extends Solver {
 
@@ -25,8 +20,8 @@ public class BacktrackSolver extends Solver {
     {
         p.consistent = false;
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
-        for (int j = 0; j < p.current[i].size() && !p.consistent; j++) {
-            p.variables[i].value = p.current[i].get(j);
+        for (int j = 0; j < p.variables[i].currentDomain.size() && !p.consistent; j++) {
+            p.variables[i].value = p.variables[i].currentDomain.get(j);
 
 
             p.consistent = true;
@@ -35,7 +30,7 @@ public class BacktrackSolver extends Solver {
             for (int h = 1; h < i && p.consistent; h++) {
                 // Remove value from candidates on constraint failure
                 if (!(p.consistent = p.check(i, h))) {
-                    p.current[i-1].remove(Integer.valueOf(p.variables[i-1].value));
+                    p.variables[i].currentDomain.remove(Integer.valueOf(p.variables[i-1].value));
                 }
             }
         }
@@ -59,28 +54,14 @@ public class BacktrackSolver extends Solver {
         int h = i - 1;
         // Rather than store any domain set for the fake variable, we assign the domain as a null pointer and just
         // check for when we try to unlabel the first possible variable
-        p.current[i] = p.domain.copy();
-        p.current[h].remove(Integer.valueOf(p.variables[h].value));
-        p.consistent = !p.current[h].isEmpty();
+        p.variables[i].currentDomain = p.domain.copy();
+        p.variables[h].currentDomain.remove(Integer.valueOf(p.variables[h].value));
+        p.consistent = !p.variables[h].currentDomain.isEmpty();
 
         return h;
     }
 
 
-    public static void main(String... args) {
-        int n = 0;
 
-        if (args.length > 1 && args[1].startsWith("-n=")) {
-            n = new Scanner(args[1]).nextInt();
-        } else {
-            System.out.println("Usage: Solver.java -n=[NUM]");
-        }
-
-
-        Problem nQueens = new NQueens(n);
-        Solver solver = new BacktrackSolver(nQueens);
-        solver.solve();
-        solver.report(nQueens);
-    }
 
 }

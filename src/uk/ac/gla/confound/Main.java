@@ -1,9 +1,9 @@
 package uk.ac.gla.confound;
 
 
+import uk.ac.gla.confound.examples.NQueens;
 import uk.ac.gla.confound.solver.*;
 
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args)

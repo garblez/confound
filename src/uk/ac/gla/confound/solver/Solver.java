@@ -1,6 +1,9 @@
 package uk.ac.gla.confound.solver;
 
+import uk.ac.gla.confound.examples.NQueens;
 import uk.ac.gla.confound.problem.Problem;
+
+import java.util.Scanner;
 
 /**
  * Abstract base class Solver defines common variables and methods between all extending solvers such as
@@ -36,13 +39,6 @@ public abstract class Solver implements SolverMethods {
         int i = 1;
 
         while (status == Status.UNKNOWN) {
-
-            for (int x = 1; x < p.numVariables+1; x++)
-                if (x==i)
-                    System.out.print("\033[1m"+p.variables[x].value+"\033[0m, ");
-                else
-                    System.out.print(p.variables[x].value+", ");
-            System.out.println("\n"+p.consistent);
 
             if (p.consistent) {
                 i = label(i);
@@ -103,6 +99,44 @@ public abstract class Solver implements SolverMethods {
             s.append(this.p.variables[i] + ", ");
         s.append(this.p.variables[this.p.variables.length-1]+"]");
         return s.toString();
+    }
+
+    public static void main(String... args) {
+        int n = 0;
+
+        if (args.length >= 2 && args[2].startsWith("-n=")) {
+
+            n = new Scanner(args[2]).nextInt();
+
+
+            Problem p = new NQueens(n);
+            Solver s;
+
+
+            switch (args[1]) {
+                case "ForwardCheckSolver":
+                    s = new ForwardCheckSolver(p);
+                    break;
+                case "BackjumpSolver":
+                    s = new BackjumpSolver(p);
+                    break;
+                case "ConflictBackjumpSolver":
+                    s = new ConflictBackjumpSolver(p);
+                    break;
+                case "BacktrackSolver":
+                    // FALL-THROUGH
+                default:
+                    s = new BacktrackSolver(p);
+            }
+
+            s.solve();
+            s.report(p);
+
+        } else {
+            System.out.println("Usage: [Solver] [Problem] -n=[NUM]");
+            System.out.println("BacktrackSolver, ForwardCheckSolver, BackjumpSolver, ConflictBackjumpSolver, DynamicBacktrackSolver");
+
+        }
     }
 
 }

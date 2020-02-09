@@ -1,6 +1,7 @@
 package uk.ac.gla.confound.problem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
 
 public class Domain {
@@ -28,12 +29,13 @@ public class Domain {
         return values;
     }
 
+
     public ArrayList<Integer> copy() {
         ArrayList<Integer> copy = new ArrayList<>();
-        int[] clone = values.clone();
         for (int i = 0; i < values.length; i++)
-            copy.add(clone[i]);
-
+            copy.add(values[i]);
         return copy;
     }
+
+
 }
