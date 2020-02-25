@@ -26,4 +26,16 @@ public abstract class Constraint {
     public static OrConstraint or(Constraint a, Constraint b) {
         return new OrConstraint(a, b);
     }
+
+    public Constraint compose(Constraint a) {
+        if (a == null) return this;
+        return and(a, this);
+    }
+
+    public static Constraint compose(Constraint a, Constraint b) {
+        if (a == null && b == null) return null;
+        else if (a == null) return b;
+        else if (b == null) return a;
+        else return and(a, b);
+    }
 }

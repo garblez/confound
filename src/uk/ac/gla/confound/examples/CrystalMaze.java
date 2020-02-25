@@ -65,7 +65,7 @@ public class CrystalMaze extends Problem {
 
         Solver s = new BacktrackSolver(p);
 
-        s.solve();
+        s.solveAll();
         s.report(p);
     }
 

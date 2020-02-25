@@ -2,7 +2,6 @@ package uk.ac.gla.confound;
 
 
 import uk.ac.gla.confound.examples.CrystalMaze;
-import uk.ac.gla.confound.examples.NQueens;
 import uk.ac.gla.confound.problem.Problem;
 import uk.ac.gla.confound.solver.*;
 
@@ -12,7 +11,7 @@ public class Main {
     {
         Problem p = new CrystalMaze(8);
         Solver btS = new BackjumpSolver(p);
-        btS.solve();
+        btS.solveAll();
         btS.report(p);
 
 
