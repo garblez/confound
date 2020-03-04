@@ -1,12 +1,12 @@
 package uk.ac.gla.confound.solver;
 
-import org.junit.internal.Classes;
 import uk.ac.gla.confound.examples.CrystalMaze;
 import uk.ac.gla.confound.examples.NQueens;
 import uk.ac.gla.confound.examples.Sudoku;
 import uk.ac.gla.confound.problem.Problem;
 
-import java.util.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * Abstract base class Solver defines common variables and methods between all extending solvers such as
@@ -20,22 +20,17 @@ public abstract class Solver implements SolverMethods {
     public static String NAME = "Base Solver";
     public Problem p;
     public Status status;
+    public Statistics stats;
 
-    int numIterations;
-    int numSolutions;
-    int backtracks;
-    double duration;
 
     public Solver(Problem p) {
-        numIterations = 0;
-        numSolutions = 0;
-        backtracks = 0;
+        stats = new Statistics(p.numVariables);
         this.p = p;
     }
 
     public void solveFor(int n)
     {
-        duration = System.currentTimeMillis();
+        stats.setCurrentTime(System.currentTimeMillis());
         status = Status.UNKNOWN;
         p.consistent = true;
         int i = 1;
@@ -45,11 +40,11 @@ public abstract class Solver implements SolverMethods {
                 i = label(i);
             } else {
                 i = unlabel(i);
-                ++backtracks;
+                stats.incBacktracks();
             }
 
             if (i > p.numVariables) {
-                ++numSolutions;    // Now we've found one iteration, we try to find another until there is none
+                stats.incSolutions(); // Now we've found one iteration, we try to find another until there is none
 
                 int[] solution = new int[p.variables.length-1];
                 for (int j = 1; j < p.variables.length; j++) {
@@ -66,14 +61,15 @@ public abstract class Solver implements SolverMethods {
             } else if (i == 0)
                 status = Status.IMPOSSIBLE;
 
-            ++numIterations;
+            stats.incNodesVisited();
+            stats.markVisited(i);
         }
-        duration = System.currentTimeMillis() - duration;
+        stats.findDuration();
     }
 
     public void solveAll()
     {
-        duration = System.currentTimeMillis();
+        stats.setCurrentTime(System.currentTimeMillis());
         status = Status.UNKNOWN;
         p.consistent = true;
 
@@ -84,11 +80,11 @@ public abstract class Solver implements SolverMethods {
                 i = label(i);
             } else {
                 i = unlabel(i);
-                ++backtracks;
+                stats.incBacktracks();
             }
 
             if (i > p.numVariables) {
-                ++numSolutions;    // Now we've found one iteration, we try to find another until there is none
+                stats.incSolutions(); // Now we've found one iteration, we try to find another until there is none
 
                 int[] solution = new int[p.variables.length-1];
                 for (int j = 1; j < p.variables.length; j++) {
@@ -101,27 +97,24 @@ public abstract class Solver implements SolverMethods {
             } else if (i == 0)
                 status = Status.IMPOSSIBLE;
 
-            ++numIterations;
+            stats.incNodesVisited();
+            stats.markVisited(i);
         }
-        duration = System.currentTimeMillis() - duration;
+        stats.findDuration();
+    }
+
+    public void printStats() {
+        System.out.println(stats+"\n");
     }
 
     public void report(Problem p)
     {
 
         System.out.println("Status report for "+NAME);
-        System.out.println("#Iterations: "+numIterations);
-        System.out.println("Duration: " + 0.001*duration + "(s)");
-        System.out.println("Backtracks: " + backtracks);
-        System.out.println("#Solutions: "+numSolutions);
+        System.out.println(stats);
         System.out.println("Solutions are as follows\n=========================");
-        for (int[] arr: p.solutions) {
-            System.out.print("[");
-            for (int x : arr) {
-                System.out.print(x + ", ");
-            }
-            System.out.println("\b\b]");
-        }
+        for (int i = 0; i < p.solutions.size(); i++)
+            p.print(i);
         System.out.println("=========================");
 
     }
@@ -136,7 +129,7 @@ public abstract class Solver implements SolverMethods {
             System.out.println("Insufficient arguments supplied:\nUsage: [Solver] [Problem] {-n [num vars]}");
 
         } else {
-            Problem p;
+            Problem p = null;
             Solver s;
 
             switch (args[1]) {
@@ -153,8 +146,13 @@ public abstract class Solver implements SolverMethods {
                     p  = new CrystalMaze(Integer.parseInt(args[3]));
                     break;
                 case "Sudoku":
-                    if (args.length != 2) System.exit(-1);
-                    p = new Sudoku();
+                    if (args.length != 3) System.exit(-1);
+                    try {
+                        p = new Sudoku(args[2]);
+                    } catch (IOException | URISyntaxException e) {
+                        e.printStackTrace();
+                        System.exit(-1);
+                    }
                     break;
                 default:
                     System.out.println("Invalid problem argument");
@@ -181,9 +179,10 @@ public abstract class Solver implements SolverMethods {
             }
             if (s == null || p == null) System.exit(-1);
 
-            s.solveFor(3);
+            //s.solveFor(3);
+            s.solveAll();
             s.report(p);
-
+            s.printStats();
         }
 
 

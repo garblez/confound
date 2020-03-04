@@ -16,8 +16,8 @@ public class Sendmory extends Problem {
         D E M N O R S Y
          */
 
-        constraints[2][2] = new NotConstraint(variables[2], 0);
-        constraints[7][7] = new NotConstraint(variables[7], 0);
+        constraints[2][2].add(new NotConstraint(variables[2], 0));
+        constraints[7][7].add(new NotConstraint(variables[7], 0));
 
     }
 }

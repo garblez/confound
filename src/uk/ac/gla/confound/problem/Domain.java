@@ -7,10 +7,10 @@ import java.util.Set;
 public class Domain {
     private int[] values;
 
-    public Domain(int numValues) {
-        this.values = new int[numValues];
-        for (int i = 0; i < numValues; i++)
-            this.values[i] = i;
+    // Singleton domain (a domain of only one value)
+    public Domain(int value) {
+        this.values = new int[1];
+        values[0] = value;
     }
 
     public Domain(int lwb, int upb) {

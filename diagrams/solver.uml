@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>uk.ac.gla.confound.solver</OriginalElement>
+  <nodes>
+    <node x="0.0" y="574.0">uk.ac.gla.confound.solver.BackjumpSolver</node>
+    <node x="254.0" y="870.0">uk.ac.gla.confound.solver.Status</node>
+    <node x="839.0" y="574.0">uk.ac.gla.confound.solver.ConflictBackjumpSolver</node>
+    <node x="402.0" y="870.0">uk.ac.gla.confound.solver.Elimination</node>
+    <node x="0.0" y="870.0">uk.ac.gla.confound.solver.ConflictSet</node>
+    <node x="459.5" y="129.0">uk.ac.gla.confound.solver.Solver</node>
+    <node x="588.0" y="596.0">uk.ac.gla.confound.solver.BacktrackSolver</node>
+    <node x="251.0" y="514.0">uk.ac.gla.confound.solver.ForwardCheckSolver</node>
+    <node x="481.0" y="0.0">uk.ac.gla.confound.solver.SolverMethods</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="uk.ac.gla.confound.solver.ForwardCheckSolver" target="uk.ac.gla.confound.solver.Solver">
+      <point x="0.0" y="-155.5" />
+      <point x="409.5" y="494.0" />
+      <point x="532.25" y="494.0" />
+      <point x="-24.25" y="167.5" />
+    </edge>
+    <edge source="uk.ac.gla.confound.solver.BackjumpSolver" target="uk.ac.gla.confound.solver.Solver">
+      <point x="0.0" y="-95.5" />
+      <point x="115.5" y="484.0" />
+      <point x="483.75" y="484.0" />
+      <point x="-72.75" y="167.5" />
+    </edge>
+    <edge source="uk.ac.gla.confound.solver.ConflictBackjumpSolver" target="uk.ac.gla.confound.solver.Solver">
+      <point x="0.0" y="-95.5" />
+      <point x="981.5" y="484.0" />
+      <point x="629.25" y="484.0" />
+      <point x="72.75" y="167.5" />
+    </edge>
+    <edge source="uk.ac.gla.confound.solver.Solver" target="uk.ac.gla.confound.solver.SolverMethods">
+      <point x="0.0" y="-167.5" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="uk.ac.gla.confound.solver.BacktrackSolver" target="uk.ac.gla.confound.solver.Solver">
+      <point x="0.0" y="-73.5" />
+      <point x="703.5" y="494.0" />
+      <point x="580.75" y="494.0" />
+      <point x="24.25" y="167.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.502262443438914" x="562.0" y="542.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

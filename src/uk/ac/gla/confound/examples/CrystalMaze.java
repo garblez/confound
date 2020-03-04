@@ -27,7 +27,7 @@ public class CrystalMaze extends Problem {
         for (int i = 1; i <= numVariables; i++) {
             for (int j = 1; j <= numVariables; j++) {
                 if (i != j) {
-                    constraints[i][j] = new NeqConstraint(variables[i], variables[j]);
+                    constraints[i][j].add(new NeqConstraint(variables[i], variables[j]));
                 }
             }
         }
@@ -52,9 +52,7 @@ public class CrystalMaze extends Problem {
         for (int i = 1; i <= numVariables; i++) {
             for (int x = 0; x < adjLists[i].size(); x++) {
                 j = adjLists[i].get(x);
-                constraints[i][j] = Constraint.and(
-                        constraints[i][j], new DistanceConstraint(variables[i], variables[j], DistanceConstraint.Op.NEQ, 1)
-                );
+                constraints[i][j].add(new DistanceConstraint(variables[i], variables[j], DistanceConstraint.Op.NEQ, 1));
             }
         }
 
