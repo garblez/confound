@@ -70,9 +70,9 @@ public class Statistics {
         sb.append("Backtracks: "+backtracks+"\n");
         sb.append("Duration: "+0.001*duration+"s\n");
         sb.append("Solutions: "+numSolutions+"\n");
-        sb.append("Node visits: ");
-        sb.append(Arrays.toString(visits));
-        sb.append("\n");
+        sb.append("Node visits: \n");
+        for (int i = 0; i < visits.length; i++)
+            sb.append(visits[i]+"\n");
         return sb.toString();
     }
 }

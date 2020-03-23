@@ -109,14 +109,11 @@ public abstract class Solver implements SolverMethods {
 
     public void report(Problem p)
     {
-
-        System.out.println("Status report for "+NAME);
-        System.out.println(stats);
-        System.out.println("Solutions are as follows\n=========================");
+        System.out.println("Solutions are as follows\n=-------------------=");
         for (int i = 0; i < p.solutions.size(); i++)
             p.print(i);
-        System.out.println("=========================");
-
+        System.out.println();
+        System.out.println("=-------------------=");
     }
 
 

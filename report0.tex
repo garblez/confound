@@ -46,7 +46,9 @@ frameround=fttt
 \end{center}
 \end{Large}
 \section*{Problem Modelling}
-At present, problems are modelled after an abstract Problem class. This class contains the variables of the problem in the form of an int array with a size one greater than the total number of variables in the problem (variable[0] is assumed a fake variable (if the solver ends up checking this variable then no consistent solution was found).
+At present, problems are modelled after an abstract Problem class. This class contains the variables of the problem in the form of a Variable class array with a size one greater than the total number of variables in the problem (variable[0] is assumed a fake variable: if the solver ends up checking this variable then no consistent solution was found).
+\subsection*{Variables}
+Variables in the constraint satisfaction problem are represented as Variable classes
 \section*{Backtracking Solver}
 The BacktrackSolver class inherits the basic search procedure from Solver - an abstract class which also implements the SolverMethods label, unlabel, check and solution - since most binary constraint satisfaction solvers derive from a similar search procedure with differences in their labelling and unlabelling methods.
 \subsection*{Search Method}
@@ -128,11 +130,15 @@ Constraints are stored globally in the elements of an (N+1)x(N+1) array (where N
 \subsubsection*{Compound Constraints}
 Compound Constraints are represented by a CompoundConstraint base class, which represents multiple constraints under one check() method. The base Constraint is a binary constraint, which limits problem representation to pairs of variables. To overcome this, constraints involving more than two variables may be represented as a compound constraint. For example, the constraint \textit{v1 != v2 != v3} may be represented as a compound constraint of \textit{v1 != v2}, \textit{v1 != v3} and \textit{v2 != v3}. The check() of the compound constraint requiring all check() methods of its constituent constraints to hold. That is, for the compound constraint to hold true, \textit{v1 != v2}, \textit{v2 != v3}, \textbf{and} \textit{v1 != v3} must all hold true. Compound constraints are added on to the constraint lists for the variables involved, just as binary constraints are. Compound constraints may consist of AndConstraint or OrConstraint where the return value for the check function is a logical and/or (respectively) between all binary constraints listed within. This allows some constraints such as the inequality discussed to short-circuit: if v1 != v2, then we need not check v1 != v3 or v2 != v3, saving time and resources.
 
+\subsubsection*{Problem Specific Constraints}
+Some constraints only have meaning within particular CSPs, for example, the Queen Constraint in NQueens or a Time constraint within meeting scheduling (i.e., no two meeting slots can overlap). As such, these constraints are written as inner classes of a derived Problem class. QueenConstraint is an inner class of the NQueen
+
 \subsubsection*{Statistics Reporter Class} 
 Statistics regarding a particular solver's search over a given problem are logged within an external statistics class, which is associated with the solver. This class records various pieces of information regarding the search, allowing analysis of search over given problems to be analysed at a later date. Statistics include the number of nodes visited (i.e., the total number of iterations made in the search); the number of times the search backtracked; the time taken to find a solution (or multiple solutions); the number of times the search algorithm visits each variable (providing an indication as to the profile of the search, where problem variables may lie). The collection and analysis of such data will be discussed in a later section.
 
 \subsection*{Arc-consistency and Search Heuristics}
 Since the objective of the study is to analyse and compare multiple search algorithms and nothing more, metaheuristics and other measures to simplify a constraint satisfaction problem and reduce the required solve time are not considered or implemented to assure that only the performance of the search algorithm is considered. If AC3 were implemented, it is unsure what effect this would have on solve time and if this effect is predictable or relevant for a comparison between solvers.
+
 \subsection*{Code Listings}
 \subsubsection*{The Problem of NQueens}
 %lstinputlisting{src/uk/ac/gla/confound/problem/Problem.java}
