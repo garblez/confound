@@ -28,7 +28,7 @@ public class Main {
             e.printStackTrace();
         } catch (IOException e) {
             System.out.println(e.getMessage());
-        }*/
+        }
         Solver solver;
         Problem p;
         BufferedWriter w;
@@ -83,6 +83,17 @@ public class Main {
             );
             w.write(solver.stats.toString());
             w.close();
+        }*/
+
+        Problem p;
+        try {
+            //p = new Sudoku("/home/max/IndependentProject/src/uk/ac/gla/confound/examples/sudoku/key03.sudoku");
+            p = new NQueens(8);
+            Solver dbt = new DynamicBacktrackSolver(p);
+            dbt.solveAll();
+            dbt.report(p);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
     }

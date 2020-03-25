@@ -22,4 +22,8 @@ public class ConstraintList {
             if (!c.check()) return false; // Quit as soon as a constraint is false
         return true; // All constraints hold true
     }
+
+    public boolean isEmpty() {
+        return constraints.isEmpty();
+    }
 }

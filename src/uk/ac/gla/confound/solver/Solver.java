@@ -109,7 +109,7 @@ public abstract class Solver implements SolverMethods {
 
     public void report(Problem p)
     {
-        System.out.println("Solutions are as follows\n=-------------------=");
+        System.out.println(p.solutions.size()+" solutions as follows\n=-------------------=");
         for (int i = 0; i < p.solutions.size(); i++)
             p.print(i);
         System.out.println();
@@ -146,7 +146,7 @@ public abstract class Solver implements SolverMethods {
                     if (args.length != 3) System.exit(-1);
                     try {
                         p = new Sudoku(args[2]);
-                    } catch (IOException | URISyntaxException e) {
+                    } catch (IOException e) {
                         e.printStackTrace();
                         System.exit(-1);
                     }

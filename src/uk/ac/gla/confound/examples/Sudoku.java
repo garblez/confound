@@ -21,7 +21,7 @@ public class Sudoku extends Problem {
     Variable[][] board = new Variable[LEN][LEN];
     String sudokuFile;
 
-    public Sudoku(String fp) throws URISyntaxException, IOException {
+    public Sudoku(String fp) throws IOException {
         super(new Domain(1, LEN), LEN*LEN);
         sudokuFile = fp;
 
