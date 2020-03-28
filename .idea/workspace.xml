@@ -7,17 +7,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e33eb4ea-6865-431c-8073-5df3cc7567e9" name="Default Changelist" comment="Add (unfinished) CompletionNQueens problem, modify Statistics output, add solution output to file.&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ValueEliminators.java" afterDir="false" />
+    <list default="true" id="e33eb4ea-6865-431c-8073-5df3cc7567e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IndependentProject/uk/ac/gla/confound/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/constraint/ConstraintList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/constraint/ConstraintList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/examples/Sudoku.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/examples/Sudoku.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/Elimination.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/EliminationSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/Solver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ValueEliminators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ValueEliminators.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +229,7 @@
       <workItem from="1583262635937" duration="6246000" />
       <workItem from="1583608011015" duration="220000" />
       <workItem from="1584129820558" duration="5613000" />
-      <workItem from="1584971626633" duration="16766000" />
+      <workItem from="1584971626633" duration="18698000" />
     </task>
     <task id="LOCAL-00002" summary="Add (unfinished) CompletionNQueens problem, modify Statistics output, add solution output to file. Add subsections Problem Specific Constraints, Variables&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <created>1584971888933</created>
@@ -245,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584971888933</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Bug with sudoku problems - seemingly all solvers yield 0 solutions. Add in ValueEliminators for Dynamic backtracking solver.">
+      <created>1585148274004</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585148274004</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +268,8 @@
     <MESSAGE value="Merge branch 'backtrack'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="Add (unfinished) CompletionNQueens problem, modify Statistics output, add solution output to file.&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="Add (unfinished) CompletionNQueens problem, modify Statistics output, add solution output to file. Add subsections Problem Specific Constraints, Variables&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add (unfinished) CompletionNQueens problem, modify Statistics output, add solution output to file. Add subsections Problem Specific Constraints, Variables&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Bug with sudoku problems - seemingly all solvers yield 0 solutions. Add in ValueEliminators for Dynamic backtracking solver." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug with sudoku problems - seemingly all solvers yield 0 solutions. Add in ValueEliminators for Dynamic backtracking solver." />
   </component>
   <component name="WindowStateProjectService">
     <state x="353" y="55" width="800" height="684" key="#Project_Structure" timestamp="1583330073836">
@@ -317,10 +318,10 @@
       <screen x="54" y="27" width="1312" height="741" />
     </state>
     <state x="443" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/54.27.1312.741@54.27.1312.741" timestamp="1580918975187" />
-    <state x="279" y="25" width="860" height="743" key="CommitChangelistDialog2" timestamp="1584971888385">
+    <state x="279" y="25" width="860" height="743" key="CommitChangelistDialog2" timestamp="1585148273261">
       <screen x="55" y="24" width="1311" height="744" />
     </state>
-    <state x="279" y="25" width="860" height="743" key="CommitChangelistDialog2/55.24.1311.744@55.24.1311.744" timestamp="1584971888385" />
+    <state x="279" y="25" width="860" height="743" key="CommitChangelistDialog2/55.24.1311.744@55.24.1311.744" timestamp="1585148273261" />
     <state x="434" y="27" width="557" height="741" key="Diagram.Print.Preview.Dialog" timestamp="1580596716917">
       <screen x="70" y="27" width="1296" height="741" />
     </state>
@@ -337,7 +338,7 @@
     <state x="496" y="126" key="FileChooserDialogImpl/55.24.1311.744@55.24.1311.744" timestamp="1584132174652" />
     <state x="503" y="126" key="FileChooserDialogImpl/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579010038819" />
     <state x="506" y="129" width="735" height="527" key="FileChooserDialogImpl/70.27.1296.741@70.27.1296.741" timestamp="1580596697741" />
-    <state width="1265" height="301" key="GridCell.Tab.0.bottom" timestamp="1585148170194">
+    <state width="1265" height="301" key="GridCell.Tab.0.bottom" timestamp="1585148285501">
       <screen x="55" y="24" width="1311" height="744" />
     </state>
     <state width="1266" height="233" key="GridCell.Tab.0.bottom/1.27.1365.741@1.27.1365.741" timestamp="1580832473722" />
@@ -345,13 +346,13 @@
     <state width="1554" height="96" key="GridCell.Tab.0.bottom/54.27.1312.741/1366.0.1600.900@54.27.1312.741" timestamp="1581959121098" />
     <state width="1266" height="271" key="GridCell.Tab.0.bottom/54.27.1312.741@54.27.1312.741" timestamp="1582730912272" />
     <state width="1554" height="322" key="GridCell.Tab.0.bottom/54.27.2912.873@54.27.2912.873" timestamp="1581964636073" />
-    <state width="1265" height="301" key="GridCell.Tab.0.bottom/55.24.1311.744@55.24.1311.744" timestamp="1585148170194" />
+    <state width="1265" height="301" key="GridCell.Tab.0.bottom/55.24.1311.744@55.24.1311.744" timestamp="1585148285501" />
     <state width="1489" height="252" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735117" />
     <state width="603" height="77" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1580413693250" />
     <state width="1489" height="146" key="GridCell.Tab.0.bottom/65.24.2901.876@65.24.2901.876" timestamp="1580245377023" />
     <state width="1250" height="71" key="GridCell.Tab.0.bottom/70.27.1296.741@70.27.1296.741" timestamp="1580602594705" />
-    <state width="1265" height="301" key="GridCell.Tab.0.center" timestamp="1585148170189">
+    <state width="1265" height="301" key="GridCell.Tab.0.center" timestamp="1585148285501">
       <screen x="55" y="24" width="1311" height="744" />
     </state>
     <state width="1266" height="233" key="GridCell.Tab.0.center/1.27.1365.741@1.27.1365.741" timestamp="1580832473722" />
@@ -359,13 +360,13 @@
     <state width="1554" height="96" key="GridCell.Tab.0.center/54.27.1312.741/1366.0.1600.900@54.27.1312.741" timestamp="1581959121098" />
     <state width="1266" height="271" key="GridCell.Tab.0.center/54.27.1312.741@54.27.1312.741" timestamp="1582730912270" />
     <state width="1554" height="322" key="GridCell.Tab.0.center/54.27.2912.873@54.27.2912.873" timestamp="1581964636070" />
-    <state width="1265" height="301" key="GridCell.Tab.0.center/55.24.1311.744@55.24.1311.744" timestamp="1585148170189" />
+    <state width="1265" height="301" key="GridCell.Tab.0.center/55.24.1311.744@55.24.1311.744" timestamp="1585148285501" />
     <state width="1489" height="252" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735106" />
     <state width="603" height="77" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1580413693246" />
     <state width="1489" height="146" key="GridCell.Tab.0.center/65.24.2901.876@65.24.2901.876" timestamp="1580245377021" />
     <state width="1250" height="71" key="GridCell.Tab.0.center/70.27.1296.741@70.27.1296.741" timestamp="1580602594704" />
-    <state width="1265" height="301" key="GridCell.Tab.0.left" timestamp="1585148170187">
+    <state width="1265" height="301" key="GridCell.Tab.0.left" timestamp="1585148285500">
       <screen x="55" y="24" width="1311" height="744" />
     </state>
     <state width="1266" height="233" key="GridCell.Tab.0.left/1.27.1365.741@1.27.1365.741" timestamp="1580832473722" />
@@ -373,13 +374,13 @@
     <state width="1554" height="96" key="GridCell.Tab.0.left/54.27.1312.741/1366.0.1600.900@54.27.1312.741" timestamp="1581959121097" />
     <state width="1266" height="271" key="GridCell.Tab.0.left/54.27.1312.741@54.27.1312.741" timestamp="1582730912268" />
     <state width="1554" height="322" key="GridCell.Tab.0.left/54.27.2912.873@54.27.2912.873" timestamp="1581964636070" />
-    <state width="1265" height="301" key="GridCell.Tab.0.left/55.24.1311.744@55.24.1311.744" timestamp="1585148170187" />
+    <state width="1265" height="301" key="GridCell.Tab.0.left/55.24.1311.744@55.24.1311.744" timestamp="1585148285500" />
     <state width="1489" height="252" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735103" />
     <state width="603" height="77" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1580413693235" />
     <state width="1489" height="146" key="GridCell.Tab.0.left/65.24.2901.876@65.24.2901.876" timestamp="1580245377019" />
     <state width="1250" height="71" key="GridCell.Tab.0.left/70.27.1296.741@70.27.1296.741" timestamp="1580602594704" />
-    <state width="1265" height="301" key="GridCell.Tab.0.right" timestamp="1585148170193">
+    <state width="1265" height="301" key="GridCell.Tab.0.right" timestamp="1585148285501">
       <screen x="55" y="24" width="1311" height="744" />
     </state>
     <state width="1266" height="233" key="GridCell.Tab.0.right/1.27.1365.741@1.27.1365.741" timestamp="1580832473722" />
@@ -387,7 +388,7 @@
     <state width="1554" height="96" key="GridCell.Tab.0.right/54.27.1312.741/1366.0.1600.900@54.27.1312.741" timestamp="1581959121098" />
     <state width="1266" height="271" key="GridCell.Tab.0.right/54.27.1312.741@54.27.1312.741" timestamp="1582730912271" />
     <state width="1554" height="322" key="GridCell.Tab.0.right/54.27.2912.873@54.27.2912.873" timestamp="1581964636071" />
-    <state width="1265" height="301" key="GridCell.Tab.0.right/55.24.1311.744@55.24.1311.744" timestamp="1585148170193" />
+    <state width="1265" height="301" key="GridCell.Tab.0.right/55.24.1311.744@55.24.1311.744" timestamp="1585148285501" />
     <state width="1489" height="252" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735117" />
     <state width="603" height="77" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1580413693248" />

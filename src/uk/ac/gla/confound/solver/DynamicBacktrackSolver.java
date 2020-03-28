@@ -30,7 +30,8 @@ public class DynamicBacktrackSolver extends Solver {
             for (int h = 1; h < i && p.consistent; h++) {
                 // Remove value from candidates on constraint failure
                 if (!(p.consistent = p.check(i, h))) {
-                    p.variables[i].currentDomain.remove(Integer.valueOf(p.variables[i-1].value));
+                    //p.variables[i].currentDomain.remove(Integer.valueOf(p.variables[i-1].value));
+                    eliminations.addToViolation(i, h);
                 }
             }
         }

@@ -86,4 +86,15 @@ public class ValueEliminators {
         elimination[index].values().forEach(violators::addAll);
         return violators;
     }
+
+    // Get the perpetrating (violating) variable indices responsible for the violation rule of index having value value.
+    public HashSet<Integer> getViolators(int index, int value) {
+        return elimination[index].getOrDefault(value, new HashSet<>());
+    }
+
+    // For variable index, add a violator index for it's current value's violation rule
+    public void addToViolation(int index, int violator) {
+        HashSet<Integer> violators = getViolators(index, p.variables[index].value);
+        violators.add(violator);
+    }
 }
