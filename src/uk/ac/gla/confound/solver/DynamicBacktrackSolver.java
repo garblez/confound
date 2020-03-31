@@ -1,14 +1,20 @@
 package uk.ac.gla.confound.solver;
 
 import uk.ac.gla.confound.problem.Problem;
+import uk.ac.gla.confound.problem.Variable;
+
+import java.util.Set;
 
 public class DynamicBacktrackSolver extends Solver {
-    ValueEliminators eliminations;
+    public ViolationRegister[] violation;
 
     public DynamicBacktrackSolver(Problem p) {
         super(p);
         NAME = "DynamicBacktrackSolver";
-        eliminations = new ValueEliminators(p);
+        violation = new ViolationRegister[p.numVariables+1];
+
+        for (int i = 0; i <= p.numVariables; i++)
+            violation[i] = new ViolationRegister(p.variables[i]);
     }
 
     /**
@@ -22,25 +28,28 @@ public class DynamicBacktrackSolver extends Solver {
         p.consistent = false;
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
         for (int j = 0; j < p.variables[i].currentDomain.size() && !p.consistent; j++) {
+
             p.variables[i].value = p.variables[i].currentDomain.get(j);
+
 
             p.consistent = true;
             // Run through all previously chosen variables and check if they are all consistent with the current candidate
             // variable[i]
             for (int h = 1; h < i && p.consistent; h++) {
                 // Remove value from candidates on constraint failure
-                if (!(p.consistent = p.check(i, h))) {
-                    //p.variables[i].currentDomain.remove(Integer.valueOf(p.variables[i-1].value));
-                    eliminations.addToViolation(i, h);
+                if (!(p.consistent = p.check(i, h)) && !violation[i].forbiddenValues().contains(p.variables[i].value)) {
+                    violation[i].addViolation(p.variables[i].value, h);
                 }
             }
         }
 
-        if (p.consistent) {
+
+        violation[i].updateCurrentDomain();
+
+        if (p.consistent)
             return i + 1;
-        } else {
+        else
             return i;
-        }
     }
 
     /**
@@ -53,12 +62,16 @@ public class DynamicBacktrackSolver extends Solver {
      */
     public int unlabel(int i)
     {
-        int h = i - 1;
+        int h = violation[i].getRecentCulprit();
+
         // Rather than store any domain set for the fake variable, we assign the domain as a null pointer and just
         // check for when we try to unlabel the first possible variable
-        p.variables[i].currentDomain = p.variables[i].domain.copy();
-        p.variables[h].currentDomain.remove(Integer.valueOf(p.variables[h].value));
+        violation[h].supposeViolation();
+        violation[i].removeViolation(p.variables[h].value);
+        violation[i].updateCurrentDomain();
+
         p.consistent = !p.variables[h].currentDomain.isEmpty();
+
 
         return h;
     }

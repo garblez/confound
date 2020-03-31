@@ -8,7 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e33eb4ea-6865-431c-8073-5df3cc7567e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ViolationRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IndependentProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IndependentProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/examples/GraphColouring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/examples/GraphColouring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/problem/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/problem/Variable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ValueEliminators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ValueEliminators.java" afterDir="false" />
     </list>
@@ -29,6 +34,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1S4fENjUYnTVl9b6vPmwdPSxyW1" />
@@ -57,7 +67,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="experimental" />
@@ -92,6 +102,19 @@
     </configuration>
     <configuration name="CrystalMaze" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="uk.ac.gla.confound.examples.CrystalMaze" />
+      <module name="IndependentProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="uk.ac.gla.confound.examples.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphColouring" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="uk.ac.gla.confound.examples.GraphColouring" />
       <module name="IndependentProject" />
       <extension name="coverage">
         <pattern>
@@ -141,37 +164,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IndexPairTest.testHashCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IndependentProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.IndexPairTest" />
-      <option name="METHOD_NAME" value="testHashCode" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.4-Queens" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.CrystalMaze" />
       <item itemvalue="Application.Sudoku" />
-      <item itemvalue="JUnit.IndexPairTest.testHashCode" />
       <item itemvalue="JUnit.IndexPairTest" />
+      <item itemvalue="Application.GraphColouring" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GraphColouring" />
         <item itemvalue="Application.CrystalMaze" />
         <item itemvalue="Application.Sudoku" />
         <item itemvalue="JUnit.IndexPairTest" />
-        <item itemvalue="JUnit.IndexPairTest.testHashCode" />
       </list>
     </recent_temporary>
   </component>
@@ -318,6 +325,10 @@
       <screen x="54" y="27" width="1312" height="741" />
     </state>
     <state x="443" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/54.27.1312.741@54.27.1312.741" timestamp="1580918975187" />
+    <state x="453" y="132" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1585681500514">
+      <screen x="65" y="24" width="1301" height="744" />
+    </state>
+    <state x="453" y="132" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/65.24.1301.744@65.24.1301.744" timestamp="1585681500514" />
     <state x="279" y="25" width="860" height="743" key="CommitChangelistDialog2" timestamp="1585148273261">
       <screen x="55" y="24" width="1311" height="744" />
     </state>
@@ -338,8 +349,8 @@
     <state x="496" y="126" key="FileChooserDialogImpl/55.24.1311.744@55.24.1311.744" timestamp="1584132174652" />
     <state x="503" y="126" key="FileChooserDialogImpl/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579010038819" />
     <state x="506" y="129" width="735" height="527" key="FileChooserDialogImpl/70.27.1296.741@70.27.1296.741" timestamp="1580596697741" />
-    <state width="1265" height="301" key="GridCell.Tab.0.bottom" timestamp="1585148285501">
-      <screen x="55" y="24" width="1311" height="744" />
+    <state width="1255" height="166" key="GridCell.Tab.0.bottom" timestamp="1585696603178">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1266" height="233" key="GridCell.Tab.0.bottom/1.27.1365.741@1.27.1365.741" timestamp="1580832473722" />
     <state width="1554" height="250" key="GridCell.Tab.0.bottom/54.27.1312.741/1366.0.1600.900@1366.0.1600.900" timestamp="1581958818720" />
@@ -349,11 +360,11 @@
     <state width="1265" height="301" key="GridCell.Tab.0.bottom/55.24.1311.744@55.24.1311.744" timestamp="1585148285501" />
     <state width="1489" height="252" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735117" />
-    <state width="603" height="77" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1580413693250" />
+    <state width="1255" height="166" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1585696603178" />
     <state width="1489" height="146" key="GridCell.Tab.0.bottom/65.24.2901.876@65.24.2901.876" timestamp="1580245377023" />
     <state width="1250" height="71" key="GridCell.Tab.0.bottom/70.27.1296.741@70.27.1296.741" timestamp="1580602594705" />
-    <state width="1265" height="301" key="GridCell.Tab.0.center" timestamp="1585148285501">
-      <screen x="55" y="24" width="1311" height="744" />
+    <state width="1255" height="166" key="GridCell.Tab.0.center" timestamp="1585696603178">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1266" height="233" key="GridCell.Tab.0.center/1.27.1365.741@1.27.1365.741" timestamp="1580832473722" />
     <state width="1554" height="250" key="GridCell.Tab.0.center/54.27.1312.741/1366.0.1600.900@1366.0.1600.900" timestamp="1581958818720" />
@@ -363,11 +374,11 @@
     <state width="1265" height="301" key="GridCell.Tab.0.center/55.24.1311.744@55.24.1311.744" timestamp="1585148285501" />
     <state width="1489" height="252" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735106" />
-    <state width="603" height="77" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1580413693246" />
+    <state width="1255" height="166" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1585696603178" />
     <state width="1489" height="146" key="GridCell.Tab.0.center/65.24.2901.876@65.24.2901.876" timestamp="1580245377021" />
     <state width="1250" height="71" key="GridCell.Tab.0.center/70.27.1296.741@70.27.1296.741" timestamp="1580602594704" />
-    <state width="1265" height="301" key="GridCell.Tab.0.left" timestamp="1585148285500">
-      <screen x="55" y="24" width="1311" height="744" />
+    <state width="1255" height="166" key="GridCell.Tab.0.left" timestamp="1585696603178">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1266" height="233" key="GridCell.Tab.0.left/1.27.1365.741@1.27.1365.741" timestamp="1580832473722" />
     <state width="1554" height="250" key="GridCell.Tab.0.left/54.27.1312.741/1366.0.1600.900@1366.0.1600.900" timestamp="1581958818720" />
@@ -377,11 +388,11 @@
     <state width="1265" height="301" key="GridCell.Tab.0.left/55.24.1311.744@55.24.1311.744" timestamp="1585148285500" />
     <state width="1489" height="252" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735103" />
-    <state width="603" height="77" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1580413693235" />
+    <state width="1255" height="166" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1585696603178" />
     <state width="1489" height="146" key="GridCell.Tab.0.left/65.24.2901.876@65.24.2901.876" timestamp="1580245377019" />
     <state width="1250" height="71" key="GridCell.Tab.0.left/70.27.1296.741@70.27.1296.741" timestamp="1580602594704" />
-    <state width="1265" height="301" key="GridCell.Tab.0.right" timestamp="1585148285501">
-      <screen x="55" y="24" width="1311" height="744" />
+    <state width="1255" height="166" key="GridCell.Tab.0.right" timestamp="1585696603178">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1266" height="233" key="GridCell.Tab.0.right/1.27.1365.741@1.27.1365.741" timestamp="1580832473722" />
     <state width="1554" height="250" key="GridCell.Tab.0.right/54.27.1312.741/1366.0.1600.900@1366.0.1600.900" timestamp="1581958818720" />
@@ -391,11 +402,11 @@
     <state width="1265" height="301" key="GridCell.Tab.0.right/55.24.1311.744@55.24.1311.744" timestamp="1585148285501" />
     <state width="1489" height="252" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735117" />
-    <state width="603" height="77" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1580413693248" />
+    <state width="1255" height="166" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1585696603178" />
     <state width="1489" height="146" key="GridCell.Tab.0.right/65.24.2901.876@65.24.2901.876" timestamp="1580245377022" />
     <state width="1250" height="71" key="GridCell.Tab.0.right/70.27.1296.741@70.27.1296.741" timestamp="1580602594704" />
-    <state width="1265" height="353" key="GridCell.Tab.1.bottom" timestamp="1583451467331">
-      <screen x="55" y="24" width="1311" height="744" />
+    <state width="1255" height="188" key="GridCell.Tab.1.bottom" timestamp="1585695958729">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1554" height="96" key="GridCell.Tab.1.bottom/54.27.1312.741/1366.0.1600.900@1366.0.1600.900" timestamp="1581958653526" />
     <state width="1554" height="96" key="GridCell.Tab.1.bottom/54.27.1312.741/1366.0.1600.900@54.27.1312.741" timestamp="1581959121098" />
@@ -404,11 +415,11 @@
     <state width="1265" height="353" key="GridCell.Tab.1.bottom/55.24.1311.744@55.24.1311.744" timestamp="1583451467331" />
     <state width="1489" height="252" key="GridCell.Tab.1.bottom/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.1.bottom/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735122" />
-    <state width="1489" height="252" key="GridCell.Tab.1.bottom/65.24.1301.744@65.24.1301.744" timestamp="1578718482556" />
+    <state width="1255" height="188" key="GridCell.Tab.1.bottom/65.24.1301.744@65.24.1301.744" timestamp="1585695958729" />
     <state width="1489" height="252" key="GridCell.Tab.1.bottom/65.24.2901.876@65.24.2901.876" timestamp="1578528601378" />
     <state width="1250" height="71" key="GridCell.Tab.1.bottom/70.27.1296.741@70.27.1296.741" timestamp="1580602594706" />
-    <state width="1265" height="353" key="GridCell.Tab.1.center" timestamp="1583451467324">
-      <screen x="55" y="24" width="1311" height="744" />
+    <state width="1255" height="188" key="GridCell.Tab.1.center" timestamp="1585695958729">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1554" height="96" key="GridCell.Tab.1.center/54.27.1312.741/1366.0.1600.900@1366.0.1600.900" timestamp="1581958653526" />
     <state width="1554" height="96" key="GridCell.Tab.1.center/54.27.1312.741/1366.0.1600.900@54.27.1312.741" timestamp="1581959121098" />
@@ -417,11 +428,11 @@
     <state width="1265" height="353" key="GridCell.Tab.1.center/55.24.1311.744@55.24.1311.744" timestamp="1583451467324" />
     <state width="1489" height="252" key="GridCell.Tab.1.center/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.1.center/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735121" />
-    <state width="1489" height="252" key="GridCell.Tab.1.center/65.24.1301.744@65.24.1301.744" timestamp="1578718482553" />
+    <state width="1255" height="188" key="GridCell.Tab.1.center/65.24.1301.744@65.24.1301.744" timestamp="1585695958729" />
     <state width="1489" height="252" key="GridCell.Tab.1.center/65.24.2901.876@65.24.2901.876" timestamp="1578528601376" />
     <state width="1250" height="71" key="GridCell.Tab.1.center/70.27.1296.741@70.27.1296.741" timestamp="1580602594705" />
-    <state width="1265" height="353" key="GridCell.Tab.1.left" timestamp="1583451467318">
-      <screen x="55" y="24" width="1311" height="744" />
+    <state width="1255" height="188" key="GridCell.Tab.1.left" timestamp="1585695958728">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1554" height="96" key="GridCell.Tab.1.left/54.27.1312.741/1366.0.1600.900@1366.0.1600.900" timestamp="1581958653526" />
     <state width="1554" height="96" key="GridCell.Tab.1.left/54.27.1312.741/1366.0.1600.900@54.27.1312.741" timestamp="1581959121098" />
@@ -430,11 +441,11 @@
     <state width="1265" height="353" key="GridCell.Tab.1.left/55.24.1311.744@55.24.1311.744" timestamp="1583451467318" />
     <state width="1489" height="252" key="GridCell.Tab.1.left/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.1.left/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735121" />
-    <state width="1489" height="252" key="GridCell.Tab.1.left/65.24.1301.744@65.24.1301.744" timestamp="1578718482552" />
+    <state width="1255" height="188" key="GridCell.Tab.1.left/65.24.1301.744@65.24.1301.744" timestamp="1585695958728" />
     <state width="1489" height="252" key="GridCell.Tab.1.left/65.24.2901.876@65.24.2901.876" timestamp="1578528601376" />
     <state width="1250" height="71" key="GridCell.Tab.1.left/70.27.1296.741@70.27.1296.741" timestamp="1580602594705" />
-    <state width="1265" height="353" key="GridCell.Tab.1.right" timestamp="1583451467330">
-      <screen x="55" y="24" width="1311" height="744" />
+    <state width="1255" height="188" key="GridCell.Tab.1.right" timestamp="1585695958729">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1554" height="96" key="GridCell.Tab.1.right/54.27.1312.741/1366.0.1600.900@1366.0.1600.900" timestamp="1581958653526" />
     <state width="1554" height="96" key="GridCell.Tab.1.right/54.27.1312.741/1366.0.1600.900@54.27.1312.741" timestamp="1581959121098" />
@@ -443,25 +454,26 @@
     <state width="1265" height="353" key="GridCell.Tab.1.right/55.24.1311.744@55.24.1311.744" timestamp="1583451467330" />
     <state width="1489" height="252" key="GridCell.Tab.1.right/65.24.1301.744/1366.0.1600.900@1366.0.1600.900" timestamp="1578958400504" />
     <state width="1255" height="358" key="GridCell.Tab.1.right/65.24.1301.744/1366.0.1600.900@65.24.1301.744" timestamp="1579200735122" />
-    <state width="1489" height="252" key="GridCell.Tab.1.right/65.24.1301.744@65.24.1301.744" timestamp="1578718482554" />
+    <state width="1255" height="188" key="GridCell.Tab.1.right/65.24.1301.744@65.24.1301.744" timestamp="1585695958729" />
     <state width="1489" height="252" key="GridCell.Tab.1.right/65.24.2901.876@65.24.2901.876" timestamp="1578528601377" />
     <state width="1250" height="71" key="GridCell.Tab.1.right/70.27.1296.741@70.27.1296.741" timestamp="1580602594706" />
     <state x="300" y="37" key="NewModule_or_Project.wizard" timestamp="1583608234789">
       <screen x="55" y="24" width="1311" height="744" />
     </state>
     <state x="300" y="37" key="NewModule_or_Project.wizard/55.24.1311.744@55.24.1311.744" timestamp="1583608234789" />
-    <state x="276" y="27" width="1022" height="737" key="SettingsEditor" timestamp="1580586298379">
-      <screen x="70" y="27" width="1296" height="741" />
+    <state x="272" y="24" width="1022" height="737" key="SettingsEditor" timestamp="1585676294243">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
-    <state x="272" y="24" width="1024" height="743" key="SettingsEditor/65.24.1301.744@65.24.1301.744" timestamp="1579615045765" />
+    <state x="272" y="24" width="1024" height="743" key="SettingsEditor/65.24.1301.744@65.24.1301.744" timestamp="1585676294243" />
     <state x="276" y="27" width="1022" height="737" key="SettingsEditor/70.27.1296.741@70.27.1296.741" timestamp="1580586298379" />
     <state x="310" y="119" key="Vcs.Push.Dialog.v2" timestamp="1584971911172">
       <screen x="55" y="24" width="1311" height="744" />
     </state>
     <state x="310" y="119" key="Vcs.Push.Dialog.v2/55.24.1311.744@55.24.1311.744" timestamp="1584971911172" />
-    <state x="459" y="291" width="636" height="231" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1580586333474">
-      <screen x="70" y="27" width="1296" height="741" />
+    <state x="456" y="289" width="636" height="231" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1585676284424">
+      <screen x="65" y="24" width="1301" height="744" />
     </state>
+    <state x="456" y="289" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/65.24.1301.744@65.24.1301.744" timestamp="1585676284424" />
     <state x="459" y="291" width="636" height="231" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/70.27.1296.741@70.27.1296.741" timestamp="1580586333474" />
     <state x="449" y="102" width="527" height="611" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1580591988091">
       <screen x="70" y="27" width="1296" height="741" />
@@ -621,6 +633,66 @@
           <line>61</line>
           <option name="timeStamp" value="109" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/Solver.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/Solver.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/Solver.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ViolationRegister.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/DynamicBacktrackSolver.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ViolationRegister.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ViolationRegister.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/FCSolver.java</url>
           <line>90</line>
@@ -669,15 +741,23 @@
           </properties>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/uk/ac/gla/confound/solver/ViolationRegister.java</url>
+          <line>29</line>
+          <properties class="uk.ac.gla.confound.solver.ViolationRegister" method="supposeViolation">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="i" language="JAVA" />
         <watch expression="p.variables" language="JAVA" />
-        <watch expression="p.variables[24]" language="JAVA" />
-        <watch expression="p.variables[25]" language="JAVA" />
         <watch expression="p.solutions" language="JAVA" />
+        <watch expression="violation" language="JAVA" />
+        <watch expression="value" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

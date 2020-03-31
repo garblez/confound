@@ -97,4 +97,9 @@ public class ValueEliminators {
         HashSet<Integer> violators = getViolators(index, p.variables[index].value);
         violators.add(violator);
     }
+
+
+    public Set<Integer> eliminatedFor(int index) {
+        return elimination[index].keySet();
+    }
 }
