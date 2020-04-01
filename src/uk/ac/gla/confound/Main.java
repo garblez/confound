@@ -88,7 +88,7 @@ public class Main {
         Problem p;
         try {
             //p = new Sudoku("/home/max/IndependentProject/src/uk/ac/gla/confound/examples/sudoku/key03.sudoku");
-            p = new NQueens(4);
+            p = new NQueens(6);
             Solver dbt = new DynamicBacktrackSolver(p);
             dbt.solveAll();
             dbt.report(p);

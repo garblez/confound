@@ -3,6 +3,8 @@ package uk.ac.gla.confound.solver;
 import uk.ac.gla.confound.problem.Problem;
 import uk.ac.gla.confound.problem.Variable;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class DynamicBacktrackSolver extends Solver {
@@ -26,6 +28,7 @@ public class DynamicBacktrackSolver extends Solver {
     public int label(int i)
     {
         p.consistent = false;
+        violation[i].updateCurrentDomain();
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
         for (int j = 0; j < p.variables[i].currentDomain.size() && !p.consistent; j++) {
 
@@ -40,11 +43,11 @@ public class DynamicBacktrackSolver extends Solver {
                 if (!(p.consistent = p.check(i, h)) && !violation[i].forbiddenValues().contains(p.variables[i].value)) {
                     violation[i].addViolation(p.variables[i].value, h);
                 }
+
             }
         }
 
 
-        violation[i].updateCurrentDomain();
 
         if (p.consistent)
             return i + 1;
@@ -66,15 +69,28 @@ public class DynamicBacktrackSolver extends Solver {
 
         // Rather than store any domain set for the fake variable, we assign the domain as a null pointer and just
         // check for when we try to unlabel the first possible variable
+
+        removeExplanationsFor(h);
         violation[h].supposeViolation();
-        violation[i].removeViolation(p.variables[h].value);
-        violation[i].updateCurrentDomain();
+        violation[h].updateCurrentDomain();
 
         p.consistent = !p.variables[h].currentDomain.isEmpty();
-
 
         return h;
     }
 
-
+    // Remove any and all eliminating explanations involving variable i as a violator
+    public void removeExplanationsFor(int i) {
+        ArrayList<Integer> removalKeys;
+        for (int j = p.numVariables; j > i; j--) {
+            removalKeys = new ArrayList<>();
+            for (Integer value: violation[j].forbiddenValues()) {
+                if (violation[j].rule.get(value).contains(i))
+                    removalKeys.add(value);
+            }
+            for (Integer key: removalKeys) {
+                violation[j].removeViolation(key);
+            }
+        }
+    }
 }
