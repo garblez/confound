@@ -1,12 +1,11 @@
 package uk.ac.gla.confound.solver;
 
-import uk.ac.gla.confound.examples.CrystalMaze;
-import uk.ac.gla.confound.examples.NQueens;
-import uk.ac.gla.confound.examples.Sudoku;
+import uk.ac.gla.confound.examples.crystalMaze.CrystalMaze;
+import uk.ac.gla.confound.examples.nqueens.NQueens;
+import uk.ac.gla.confound.examples.sudoku.Sudoku;
 import uk.ac.gla.confound.problem.Problem;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 /**
  * Abstract base class Solver defines common variables and methods between all extending solvers such as
@@ -91,7 +90,7 @@ public abstract class Solver implements SolverMethods {
                     solution[j-1] = p.variables[j].value;
                 }
                 p.solutions.add(solution);
-
+                p.print(p.solutions.size()-1);
                 i -= 1;
                 p.consistent = false;
             } else if (i == 0)

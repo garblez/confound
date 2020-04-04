@@ -1,11 +1,10 @@
-package uk.ac.gla.confound.examples;
+package uk.ac.gla.confound.examples.graphColouring;
 
 import uk.ac.gla.confound.constraint.ConstraintList;
 import uk.ac.gla.confound.constraint.NeqConstraint;
 import uk.ac.gla.confound.problem.Domain;
 import uk.ac.gla.confound.problem.Problem;
-import uk.ac.gla.confound.problem.Variable;
-import uk.ac.gla.confound.solver.DynamicBacktrackSolver;
+import uk.ac.gla.confound.solver.BacktrackSolver;
 import uk.ac.gla.confound.solver.Solver;
 
 public class GraphColouring extends Problem {
@@ -57,7 +56,7 @@ public class GraphColouring extends Problem {
 
     public static void main(String... args) {
         Problem p = new GraphColouring();
-        Solver dbt = new DynamicBacktrackSolver(p);
+        Solver dbt = new BacktrackSolver(p);
         dbt.solveAll();
         dbt.report(p);
     }

@@ -1,4 +1,4 @@
-package uk.ac.gla.confound.examples;
+package uk.ac.gla.confound.examples.nqueens;
 
 import uk.ac.gla.confound.problem.Problem;
 

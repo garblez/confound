@@ -1,6 +1,5 @@
-package uk.ac.gla.confound.examples;
+package uk.ac.gla.confound.examples.sudoku;
 
-import uk.ac.gla.confound.constraint.Constraint;
 import uk.ac.gla.confound.constraint.NeqConstraint;
 import uk.ac.gla.confound.problem.Constant;
 import uk.ac.gla.confound.problem.Domain;
@@ -11,9 +10,7 @@ import uk.ac.gla.confound.solver.Solver;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Sudoku extends Problem {
@@ -26,7 +23,7 @@ public class Sudoku extends Problem {
         sudokuFile = fp;
 
         readBoard();
-
+        System.out.println("Board read");
         // Make the values in each row all unique
         for (int row = 0; row < LEN; row++)
             makeRowUnique(row, board);

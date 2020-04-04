@@ -1,6 +1,5 @@
-package uk.ac.gla.confound.examples;
+package uk.ac.gla.confound.examples.crystalMaze;
 
-import uk.ac.gla.confound.constraint.Constraint;
 import uk.ac.gla.confound.constraint.DistanceConstraint;
 import uk.ac.gla.confound.constraint.NeqConstraint;
 import uk.ac.gla.confound.problem.Domain;

@@ -27,13 +27,16 @@ public class DynamicBacktrackSolver extends Solver {
      */
     public int label(int i)
     {
+
+
         p.consistent = false;
         violation[i].updateCurrentDomain();
+
+
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
         for (int j = 0; j < p.variables[i].currentDomain.size() && !p.consistent; j++) {
 
             p.variables[i].value = p.variables[i].currentDomain.get(j);
-
 
             p.consistent = true;
             // Run through all previously chosen variables and check if they are all consistent with the current candidate
@@ -46,7 +49,6 @@ public class DynamicBacktrackSolver extends Solver {
 
             }
         }
-
 
 
         if (p.consistent)
@@ -66,23 +68,18 @@ public class DynamicBacktrackSolver extends Solver {
     public int unlabel(int i)
     {
         int h = violation[i].getRecentCulprit();
-
-        // Rather than store any domain set for the fake variable, we assign the domain as a null pointer and just
-        // check for when we try to unlabel the first possible variable
-
+        violation[i].removeViolation(p.variables[h].value);
         removeExplanationsFor(h);
         violation[h].supposeViolation();
-        violation[h].updateCurrentDomain();
-
-        p.consistent = !p.variables[h].currentDomain.isEmpty();
-
+        p.consistent = !(p.variables[h].domain.size() == violation[h].forbiddenValues().size());
         return h;
     }
+
 
     // Remove any and all eliminating explanations involving variable i as a violator
     public void removeExplanationsFor(int i) {
         ArrayList<Integer> removalKeys;
-        for (int j = p.numVariables; j > i; j--) {
+        for (int j = i; j < p.numVariables+1; j++) {
             removalKeys = new ArrayList<>();
             for (Integer value: violation[j].forbiddenValues()) {
                 if (violation[j].rule.get(value).contains(i))

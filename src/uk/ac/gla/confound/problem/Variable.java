@@ -14,6 +14,7 @@ public class Variable {
         this.currentDomain = new ArrayList<>();
         this.value = domain.values()[0];
         this.index = index;
+        this.name = "Variable("+index+")";
         for (Integer value: domain.values())
             this.currentDomain.add(value);
     }
@@ -37,7 +38,11 @@ public class Variable {
 
     @Override
     public String toString() {
-        return "Variable("+index+") : "+value+"\n";
+        return name + ": " + value + "\n";
     }
 
+
+    public void setName(String newName) {
+        name = newName;
+    }
 }

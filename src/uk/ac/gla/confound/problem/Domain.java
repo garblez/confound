@@ -37,5 +37,8 @@ public class Domain {
         return copy;
     }
 
+    public int size() {
+        return values.length;
+    }
 
 }
