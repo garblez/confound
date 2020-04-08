@@ -14,7 +14,7 @@ public class ConstraintMatrix {
         constraints[i][j].add(c);
     }
 
-    public void addBi(int i, int j, Constraint c) {
+    public void addBoth(int i, int j, Constraint c) {
         constraints[i][j].add(c);
         constraints[j][i].add(c);
     }
@@ -24,7 +24,7 @@ public class ConstraintMatrix {
         return constraints[i][j];
     }
 
-    public boolean check(int i, int j) {
+    public boolean checkFor(int i, int j) {
         return constraints[i][j].check();
     }
 }

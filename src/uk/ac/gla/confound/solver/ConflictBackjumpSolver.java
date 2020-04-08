@@ -16,7 +16,7 @@ public class ConflictBackjumpSolver extends Solver {
     public int label(int i) {
         p.consistent = false;
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
-        for (int j = 0; j < p.variables[i].currentDomain.size() && !p.consistent; j++) {
+        for (int j = p.variables[i].currentDomain.size() - 1; j > -1  && !p.consistent; j--) {
             p.variables[i].value = p.variables[i].currentDomain.get(j);
 
             p.consistent = true;

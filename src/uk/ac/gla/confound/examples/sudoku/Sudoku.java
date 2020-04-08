@@ -5,12 +5,14 @@ import uk.ac.gla.confound.problem.Constant;
 import uk.ac.gla.confound.problem.Domain;
 import uk.ac.gla.confound.problem.Problem;
 import uk.ac.gla.confound.problem.Variable;
-import uk.ac.gla.confound.solver.BacktrackSolver;
+import uk.ac.gla.confound.solver.ForwardCheckSolver;
 import uk.ac.gla.confound.solver.Solver;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Sudoku extends Problem {
@@ -19,11 +21,11 @@ public class Sudoku extends Problem {
     String sudokuFile;
 
     public Sudoku(String fp) throws IOException {
-        super(new Domain(1, LEN), LEN*LEN);
+        super(new Domain(1, LEN),  LEN*LEN);
         sudokuFile = fp;
 
         readBoard();
-        System.out.println("Board read");
+
         // Make the values in each row all unique
         for (int row = 0; row < LEN; row++)
             makeRowUnique(row, board);
@@ -81,18 +83,20 @@ public class Sudoku extends Problem {
         for (int c = 0; c < LEN; c++)
             for (int c1 = 0; c1 < LEN; c1++)
                 if (c != c1)
-                    constraints[stride(row, c)+1][stride(row, c1)+1].add(new NeqConstraint(board[row][c], board[row][c1]));
+                    //constraints[stride(row, c)+1][stride(row, c1)+1].add(new NeqConstraint(board[row][c], board[row][c1]));
+                    constraints.add(stride(row, c)+1, stride(row, c1)+1, new NeqConstraint(board[row][c], board[row][c1]));
     }
 
     public void makeColUnique(int col, Variable[][] board) {
-            for (int r = 0; r < LEN; r++)
-                for (int r1 = 0; r1 < LEN; r1++)
-                    if (r != r1) {
+        for (int r = 0; r < LEN; r++)
+            for (int r1 = 0; r1 < LEN; r1++)
+                if (r != r1) {/*
                         constraints[stride(r, col) + 1][stride(r1, col) + 1].add(
                                 new NeqConstraint(board[r][col], board[r1][col])
-                        );
+                        );*/
+                    constraints.add(stride(r, col)+1,stride(r1,col)+1, new NeqConstraint(board[r][col], board[r1][col]));
 
-                    }
+                }
     }
 
     public int[] gridIndices(int x, int y, int len, Variable[][] board) {
@@ -110,7 +114,7 @@ public class Sudoku extends Problem {
         for (int i = 0; i < indices.length; i++)
             for (int j = 0; j < indices.length; j++)
                 if (i!=j)
-                    constraints[indices[i]][indices[j]].add(new NeqConstraint(variables[indices[i]], variables[indices[j]]));
+                    constraints.add(indices[i], indices[j], new NeqConstraint(variables[indices[i]], variables[indices[j]]));
     }
 
     @Override
@@ -128,9 +132,12 @@ public class Sudoku extends Problem {
     }
 
     public static void main(String... args) throws URISyntaxException, IOException {
-        Problem p = new Sudoku(args[2]);
-        Solver btSolver = new BacktrackSolver(p);
-        btSolver.solveFor(1);
+        Problem p = new Sudoku(Paths.get(".").toAbsolutePath().normalize().toString() +
+                "/"+"src/uk/ac/gla/confound/examples/sudoku/prob0.sudoku");
+
+        Solver btSolver = new ForwardCheckSolver(p);
+        btSolver.solve();
         btSolver.report(p);
+        btSolver.printStats();
     }
 }

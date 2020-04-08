@@ -38,4 +38,15 @@ public abstract class Constraint {
         else if (b == null) return a;
         else return and(a, b);
     }
+
+
+    public static void allDiff(ConstraintMatrix constraints, Variable... variables) {
+        for (int i = 0; i < variables.length; i++) {
+            for (int j = 0; j < variables.length; j++) {
+                if (!variables[i].equals(variables[j]) && !variables[i].isNil() && !variables[j].isNil()) {
+                    constraints.add(variables[i].index, variables[j].index, new NeqConstraint(variables[i], variables[j]));
+                }
+            }
+        }
+    }
 }

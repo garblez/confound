@@ -6,6 +6,7 @@ import uk.ac.gla.confound.examples.sudoku.Sudoku;
 import uk.ac.gla.confound.problem.Problem;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Abstract base class Solver defines common variables and methods between all extending solvers such as
@@ -20,14 +21,14 @@ public abstract class Solver implements SolverMethods {
     public Problem p;
     public Status status;
     public Statistics stats;
-
+    public ArrayList<Integer> path = new ArrayList<>();
 
     public Solver(Problem p) {
         stats = new Statistics(p.numVariables);
         this.p = p;
     }
 
-    public void solveFor(int n)
+    public void solve(int n)
     {
         stats.setCurrentTime(System.currentTimeMillis());
         status = Status.UNKNOWN;
@@ -54,8 +55,9 @@ public abstract class Solver implements SolverMethods {
                 i -= 1;
                 p.consistent = false;
 
-                if (p.solutions.size() == n)
-                    break;
+                if (p.solutions.size() == n) {
+                    status = Status.SOLUTION;  // Causes the solver to break from searching
+                }
 
             } else if (i == 0)
                 status = Status.IMPOSSIBLE;
@@ -66,7 +68,7 @@ public abstract class Solver implements SolverMethods {
         stats.findDuration();
     }
 
-    public void solveAll()
+    public void solve()
     {
         stats.setCurrentTime(System.currentTimeMillis());
         status = Status.UNKNOWN;
@@ -74,7 +76,8 @@ public abstract class Solver implements SolverMethods {
 
         int i = 1;
 
-        while (status == Status.UNKNOWN) {
+        // Keep searching for the first/next solution
+        while (status == Status.UNKNOWN || status == Status.SOLUTION) {
             if (p.consistent) {
                 i = label(i);
             } else {
@@ -90,14 +93,15 @@ public abstract class Solver implements SolverMethods {
                     solution[j-1] = p.variables[j].value;
                 }
                 p.solutions.add(solution);
-                p.print(p.solutions.size()-1);
                 i -= 1;
                 p.consistent = false;
+                status = Status.SOLUTION;
             } else if (i == 0)
                 status = Status.IMPOSSIBLE;
 
             stats.incNodesVisited();
             stats.markVisited(i);
+            //addToPath(i);
         }
         stats.findDuration();
     }
@@ -108,13 +112,19 @@ public abstract class Solver implements SolverMethods {
 
     public void report(Problem p)
     {
-        System.out.println(p.solutions.size()+" solutions as follows\n=-------------------=");
-        for (int i = 0; i < p.solutions.size(); i++)
-            p.print(i);
-        System.out.println();
-        System.out.println("=-------------------=");
+        System.out.println(p.solutions.size() > 0 ? Status.SOLUTION : status);
+
+            System.out.println(p.solutions.size() + " solutions as follows");
+            for (int i = 0; i < p.solutions.size(); i++)
+                p.print(i);
+            System.out.println();
+            System.out.println("=--------------------------=");
+
     }
 
+    public void addToPath(int index) {
+        path.add(index);
+    }
 
     // Usage: [Solver] [Problem] {-n [num vars]}
     public static void main(String... args) {
@@ -175,8 +185,7 @@ public abstract class Solver implements SolverMethods {
             }
             if (s == null || p == null) System.exit(-1);
 
-            //s.solveFor(3);
-            s.solveAll();
+            s.solve();
             s.report(p);
             s.printStats();
         }

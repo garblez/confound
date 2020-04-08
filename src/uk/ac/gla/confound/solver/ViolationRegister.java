@@ -40,8 +40,9 @@ public class ViolationRegister {
     public Integer getRecentCulprit() {
         HashSet<Integer> violators = new HashSet<>();
         rule.values().forEach(violators::addAll);
-        if (violators.isEmpty())
-            return subject.index-1;
+        if (violators.isEmpty()) {
+            return subject.index - 1;
+        }
         return Collections.max(violators);
     }
 
@@ -56,6 +57,8 @@ public class ViolationRegister {
     public Set<Integer> forbiddenValues() {
         return rule.keySet();
     }
+
+
 
 
     public String toString() {
@@ -73,39 +76,23 @@ public class ViolationRegister {
     }
 
     public static void main(String... args) {
-        Variable[] v = new Variable[2];
-        v[0] = new Variable(new Domain(1,2), 0);
-        v[1] = new Variable(new Domain(1,2), 1);
+        Variable[] v = new Variable[3];
+        v[0] = new Variable(new Domain(1,2));
+        v[1] = new Variable(new Domain(1,2));
+        v[2] = new Variable(new Domain(1,3));
 
-        ViolationRegister[] violation = new ViolationRegister[2];
-        violation[0] = new ViolationRegister(v[0]);
-        violation[1] = new ViolationRegister(v[1]);
-
-        violation[1].addViolation(1, v[0].index);
-        violation[1].addViolation(2, 3);
-
-        System.out.println(violation[1].getRecentCulprit());
-        System.out.println(violation[0].getRecentCulprit());
-
-        v[0].value = 99;
-        violation[0].addViolation(2, 1);
-        violation[0].addViolation(3, 8);
-        System.out.println(violation[0].forbiddenValues());
-        violation[0].supposeViolation();
-        System.out.println(violation[0].forbiddenValues());
-        System.out.println(violation[0].getRecentCulprit());
-        System.out.println(violation[0].rule.values());
-
-        System.out.println("\n"+violation[0].forbiddenValues());
-        System.out.println("---"+v[0].currentDomain);
-        violation[0].updateCurrentDomain();
-        System.out.println(v[0].currentDomain);
-
-        Variable x = new Variable(new Domain(1,2), 3);
-        ViolationRegister violate = new ViolationRegister(x);
-        x.value = 4;
-        System.out.println(violate.forbiddenValues()+" "+violate.rule.values());
-        violate.supposeViolation();
-        System.out.println(violate.forbiddenValues()+" "+violate.rule.values());
+        ViolationRegister[] violate = new ViolationRegister[3];
+        violate[0] = new ViolationRegister(v[0]);
+        violate[1] = new ViolationRegister(v[1]);
+        violate[2] = new ViolationRegister(v[2]);
+        violate[1].addViolation(2, 0);
+        violate[2].addViolation(1, 0);
+        violate[2].addViolation(1, 3);
+        violate[2].addViolation(0, 0);
+        for (ViolationRegister viola: violate)
+            System.out.println(viola);
+        violate[2].removeViolation(1);
+        for (ViolationRegister viola: violate)
+            System.out.println(viola);
     }
 }

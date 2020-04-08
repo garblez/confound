@@ -4,5 +4,6 @@ package uk.ac.gla.confound.problem;
 public class Constant extends Variable {
     public Constant(int value, int index) {
         super(new Domain(value), index);
+        this.name = "Constant("+index+")";
     }
 }

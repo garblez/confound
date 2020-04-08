@@ -34,7 +34,7 @@ public class DynamicBacktrackSolver extends Solver {
 
 
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
-        for (int j = 0; j < p.variables[i].currentDomain.size() && !p.consistent; j++) {
+        for (int j = p.variables[i].currentDomain.size() - 1; j > -1  && !p.consistent; j--) {
 
             p.variables[i].value = p.variables[i].currentDomain.get(j);
 
@@ -43,7 +43,7 @@ public class DynamicBacktrackSolver extends Solver {
             // variable[i]
             for (int h = 1; h < i && p.consistent; h++) {
                 // Remove value from candidates on constraint failure
-                if (!(p.consistent = p.check(i, h)) && !violation[i].forbiddenValues().contains(p.variables[i].value)) {
+                if (!(p.consistent = p.check(i, h))) {
                     violation[i].addViolation(p.variables[i].value, h);
                 }
 

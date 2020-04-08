@@ -24,11 +24,11 @@ public class VariableTest {
     @Before
     public void setUp() throws Exception {
         d = new Domain(1,4);
-        a = new Variable(d, 4);
-        b = new Variable(d,5);
+        a = new Variable(d);
+        b = new Variable(d);
         vars = new Variable[4];
         for (int i = 0; i < 4;i++)
-            vars[i] = new Variable(d,i);
+            vars[i] = new Variable(d);
 
         vars[0].value = 2;
         vars[1].value = 0;

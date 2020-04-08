@@ -11,82 +11,14 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException
     {
-        /*
-        try {
-            //p = new Sudoku("/home/max/IndependentProject/src/uk/ac/gla/confound/examples/sudoku/key03.sudoku");
-            p = new NQueens(8);
-            Solver btS = new ConflictBackjumpSolver(p);
-            btS.solveAll();
-            btS.report(p);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        Solver solver;
-        Problem p;
-        BufferedWriter w;
-
-        for (int i = 4; i < 13; i++) {
-            p = new NQueens(i);
-            solver = new BacktrackSolver(p);
-            System.out.println("Attempting to solve for "+i+"Queens");
-            solver.solveAll();
-
-            w = new BufferedWriter(
-                    new FileWriter("/home/max/IndependentProject/src/uk/ac/gla/confound/solutions/nqueen/bt/sol"+i+".txt")
-            );
-            w.write(solver.stats.toString());
-            w.close();
-        }
-
-        for (int i = 4; i < 13; i++) {
-            p = new NQueens(i);
-            solver = new ForwardCheckSolver(p);
-            System.out.println("Attempting to solve for "+i+"Queens");
-            solver.solveAll();
-
-            w = new BufferedWriter(
-                    new FileWriter("/home/max/IndependentProject/src/uk/ac/gla/confound/solutions/nqueen/fc/sol"+i+".txt")
-            );
-            w.write(solver.stats.toString());
-            w.close();
-        }
-
-        for (int i = 4; i < 13; i++) {
-            p = new NQueens(i);
-            solver = new BackjumpSolver(p);
-            System.out.println("Attempting to solve for "+i+"Queens");
-            solver.solveAll();
-
-            w = new BufferedWriter(
-                    new FileWriter("/home/max/IndependentProject/src/uk/ac/gla/confound/solutions/nqueen/bj/sol"+i+".txt")
-            );
-            w.write(solver.stats.toString());
-            w.close();
-        }
-
-        for (int i = 4; i < 13; i++) {
-            p = new NQueens(i);
-            solver = new ConflictBackjumpSolver(p);
-            System.out.println("Attempting to solve for "+i+"Queens");
-            solver.solveAll();
-
-            w = new BufferedWriter(
-                    new FileWriter("/home/max/IndependentProject/src/uk/ac/gla/confound/solutions/nqueen/cbj/sol"+i+".txt")
-            );
-            w.write(solver.stats.toString());
-            w.close();
-        }*/
 
         Problem p;
         try {
-            p = new Sudoku("/home/max/IndependentProject/confound/src/uk/ac/gla/confound/examples/sudoku/almost.sudoku");
+            p = new Sudoku("../examples/sudoku/almost.sudoku");
             //p = new NQueens(8);
             Solver dbt = new DynamicBacktrackSolver(p);
-            dbt.solveAll();
+            dbt.solve();
             dbt.report(p);
-            System.out.println(p.constraints[1][2].toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

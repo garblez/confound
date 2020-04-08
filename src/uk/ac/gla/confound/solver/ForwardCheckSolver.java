@@ -63,7 +63,7 @@ public class ForwardCheckSolver extends Solver {
     @Override
     public int label(int i) {
         p.consistent = false;
-        ArrayList<Integer> dom = (ArrayList<Integer>) p.variables[i].currentDomain.clone();
+        /*ArrayList<Integer> dom = (ArrayList<Integer>) p.variables[i].currentDomain.clone();
 
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
         for (int k = 0; k < dom.size() && !p.consistent; k++) {
@@ -72,6 +72,20 @@ public class ForwardCheckSolver extends Solver {
 
             for (int j = i+1; j < p.numVariables+1 && p.consistent; j++) {
                 if (!(p.consistent = checkForward(i, j))){
+                    p.variables[i].currentDomain.remove(Integer.valueOf(p.variables[i].value));
+                    undoReductions(i);
+
+                }
+            }
+        }*/
+
+        // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
+        for (int k = p.variables[i].currentDomain.size() - 1; k > -1  && !p.consistent; k--) {
+            p.variables[i].value = p.variables[i].currentDomain.get(k);
+            p.consistent = true;
+
+            for (int j = i + 1; j < p.numVariables + 1 && p.consistent; j++) {
+                if (!(p.consistent = checkForward(i, j))) {
                     p.variables[i].currentDomain.remove(Integer.valueOf(p.variables[i].value));
                     undoReductions(i);
 
