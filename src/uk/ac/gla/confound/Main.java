@@ -18,7 +18,7 @@ public class Main {
             //p = new NQueens(8);
             Solver dbt = new DynamicBacktrackSolver(p);
             dbt.solve();
-            dbt.report(p);
+            dbt.report();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

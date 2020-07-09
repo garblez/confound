@@ -15,8 +15,8 @@ public class Domain {
 
     public Domain(int lwb, int upb) {
         this.values = new int[upb-lwb+1];
-        for (int i = lwb; i <= upb; i++)
-            this.values[i-lwb] = i;
+        for (int i = upb; i >= lwb; i--)
+            this.values[upb-i] = i;
     }
 
     public Domain(Set<Integer> values) {

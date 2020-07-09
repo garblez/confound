@@ -5,13 +5,11 @@ import uk.ac.gla.confound.problem.Constant;
 import uk.ac.gla.confound.problem.Domain;
 import uk.ac.gla.confound.problem.Problem;
 import uk.ac.gla.confound.problem.Variable;
-import uk.ac.gla.confound.solver.ForwardCheckSolver;
-import uk.ac.gla.confound.solver.Solver;
+import uk.ac.gla.confound.solver.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -90,12 +88,8 @@ public class Sudoku extends Problem {
     public void makeColUnique(int col, Variable[][] board) {
         for (int r = 0; r < LEN; r++)
             for (int r1 = 0; r1 < LEN; r1++)
-                if (r != r1) {/*
-                        constraints[stride(r, col) + 1][stride(r1, col) + 1].add(
-                                new NeqConstraint(board[r][col], board[r1][col])
-                        );*/
+                if (r != r1) {
                     constraints.add(stride(r, col)+1,stride(r1,col)+1, new NeqConstraint(board[r][col], board[r1][col]));
-
                 }
     }
 
@@ -131,13 +125,23 @@ public class Sudoku extends Problem {
         System.out.println(sb.toString()+"-------------------------");
     }
 
-    public static void main(String... args) throws URISyntaxException, IOException {
-        Problem p = new Sudoku(Paths.get(".").toAbsolutePath().normalize().toString() +
-                "/"+"src/uk/ac/gla/confound/examples/sudoku/prob0.sudoku");
+    public static void main(String... args) throws IOException {
+        String baseFileName = "sudoku_hard_";
+        String fileName;
+        Problem p;
+        Solver s;
+        for (int i = 1; i < 11; i++) {
+            fileName = baseFileName+i+".txt";
+            p = new Sudoku(Paths.get(".").toAbsolutePath().normalize().toString() +
+                    "/" + "src/uk/ac/gla/confound/examples/sudoku/puzzles/" + fileName);
 
-        Solver btSolver = new ForwardCheckSolver(p);
-        btSolver.solve();
-        btSolver.report(p);
-        btSolver.printStats();
+            s = new DynamicBacktrackSolver(p);
+            s.solve(1);
+            System.out.println("Problem "+i);
+
+            //s.report();
+            s.printStats();
+
+        }
     }
 }

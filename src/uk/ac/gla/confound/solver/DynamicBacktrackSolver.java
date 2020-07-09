@@ -30,9 +30,8 @@ public class DynamicBacktrackSolver extends Solver {
 
 
         p.consistent = false;
+
         violation[i].updateCurrentDomain();
-
-
         // Check each value variable[i] *could* be until we have a consistent value or we exhaust all current possibilities
         for (int j = p.variables[i].currentDomain.size() - 1; j > -1  && !p.consistent; j--) {
 
@@ -46,9 +45,10 @@ public class DynamicBacktrackSolver extends Solver {
                 if (!(p.consistent = p.check(i, h))) {
                     violation[i].addViolation(p.variables[i].value, h);
                 }
-
             }
+
         }
+
 
 
         if (p.consistent)
@@ -67,11 +67,12 @@ public class DynamicBacktrackSolver extends Solver {
      */
     public int unlabel(int i)
     {
-        int h = violation[i].getRecentCulprit();
+
+        int h= violation[i].getRecentCulprit();
         violation[i].removeViolation(p.variables[h].value);
         removeExplanationsFor(h);
         violation[h].supposeViolation();
-        p.consistent = !(p.variables[h].domain.size() == violation[h].forbiddenValues().size());
+        p.consistent = p.variables[h].domain.size() != violation[h].forbiddenValues().size();
         return h;
     }
 

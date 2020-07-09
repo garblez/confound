@@ -2,7 +2,11 @@ package uk.ac.gla.confound.solver;
 
 import uk.ac.gla.confound.problem.Problem;
 
-
+/**
+ * The simple BacktrackSolver
+ * The label and unlabel operations only work to advance ahead and retreat back by 1 variable. It is the simplest
+ * solver within the library.
+ */
 public class BacktrackSolver extends Solver {
 
     public BacktrackSolver(Problem p) {

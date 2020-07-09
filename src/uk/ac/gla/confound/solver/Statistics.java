@@ -1,6 +1,5 @@
 package uk.ac.gla.confound.solver;
 
-import java.util.Arrays;
 
 public class Statistics {
     private int numVariables;
@@ -9,6 +8,8 @@ public class Statistics {
     private int backtracks;
     private double duration;
     private int[] visits;
+    private Status status;
+
 
     public Statistics(int n) {
         numVariables = n;
@@ -17,6 +18,7 @@ public class Statistics {
         backtracks = 0;
         duration = System.currentTimeMillis();
         visits = new int[n+1];
+        status = Status.UNKNOWN;
     }
 
     public void incBacktracks() {
@@ -49,6 +51,9 @@ public class Statistics {
         return max;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public int[] getVisits() {
         return visits;
@@ -65,14 +70,14 @@ public class Statistics {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Status report:\n");
+        sb.append("Status:"+this.status+"\n");
         sb.append("Nodes visited: "+numIterations+"\n");
         sb.append("Backtracks: "+backtracks+"\n");
         sb.append("Duration: "+0.001*duration+"s\n");
         sb.append("Solutions: "+numSolutions+"\n");
         sb.append("Node visits: \n");
         for (int i = 0; i < visits.length; i++)
-            sb.append(visits[i]+"\n");
+            sb.append(i+" "+visits[i]+"\n");
         return sb.toString();
     }
 }

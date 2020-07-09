@@ -8,7 +8,7 @@ public class Solve {
         Problem p = new NQueens(8);
         Solver s = new DynamicBacktrackSolver(p);
         s.solve();
-        s.report(p);
+        s.report();
         System.out.println(p.solutions.size());
     }
 }

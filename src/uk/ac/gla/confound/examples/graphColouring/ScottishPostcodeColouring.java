@@ -61,7 +61,7 @@ public class ScottishPostcodeColouring extends Problem {
         Solver s = new ForwardCheckSolver(p);
         s.solve(1);
         System.out.println(p.solutions.size());
-        s.report(p);
+        s.report();
         System.out.println(p.variables[5]);
     }
 }

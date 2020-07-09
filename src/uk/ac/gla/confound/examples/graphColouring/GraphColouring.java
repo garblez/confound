@@ -10,20 +10,21 @@ public class GraphColouring extends Problem {
     private String[] countries = new String[]{"albania", "bulgaria", "china", "denmark", "england"};
 
     public GraphColouring() {
-        super(new Domain(0,2), 4);
-        variables[1].setName("a");
-        variables[2].setName("b");
-        variables[3].setName("c");
-        variables[4].setName("d");
-
-        constraints.addBoth(1,2, new NeqConstraint(variables[1], variables[2]));
-        constraints.addBoth(1,3, new NeqConstraint(variables[1], variables[3]));
-        constraints.addBoth(2,3, new NeqConstraint(variables[2], variables[3]));
-        constraints.addBoth(1,2, new NeqConstraint(variables[1], variables[2]));
-        constraints.addBoth(3,4, new NeqConstraint(variables[3], variables[4]));
+        super(new Domain(0,2), 5);
+        variables[1].setName("albania");
+        variables[2].setName("bulgaria");
+        variables[3].setName("china");
+        variables[4].setName("denmark");
+        variables[5].setName("england");
 
 
-/*
+        //constraints.addBoth(1,2, new NeqConstraint(variables[1], variables[2]));
+        //constraints.addBoth(1,3, new NeqConstraint(variables[1], variables[3]));
+        //constraints.addBoth(2,3, new NeqConstraint(variables[2], variables[3]));
+        //constraints.addBoth(1,2, new NeqConstraint(variables[1], variables[2]));
+        //constraints.addBoth(3,4, new NeqConstraint(variables[3], variables[4]));
+
+
         // Between Albania and China
         constraints.addBoth(1, 3, new NeqConstraint(variables[1], variables[3]));
         // Between Albania and Denmark
@@ -36,7 +37,7 @@ public class GraphColouring extends Problem {
         constraints.addBoth(2, 4, new NeqConstraint(variables[2], variables[4]));
         // Between Bulgaria and England
         constraints.addBoth(2, 5, new NeqConstraint(variables[2], variables[5]));
-        */
+
 
 
     }
@@ -54,8 +55,8 @@ public class GraphColouring extends Problem {
 
     public static void main(String... args) {
         Problem p = new GraphColouring();
-        Solver dbt = new BackjumpSolver(p);
+        Solver dbt = new BacktrackSolver(p);
         dbt.solve();
-        dbt.report(p);
+        dbt.report();
     }
 }

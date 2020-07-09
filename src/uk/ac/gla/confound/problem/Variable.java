@@ -12,8 +12,8 @@ public class Variable {
     public Domain domain;
     public String name = "";
 
-    public static void incrementAmount() {
-        ++total;
+    public static void incrementAmount(int numVariables) {
+        total = ++total % numVariables;
     }
 
     public Variable(Domain domain) {

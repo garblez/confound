@@ -15,7 +15,7 @@ public class AllDifferent extends Problem {
         Problem p = new AllDifferent(3);
         Solver s = new DynamicBacktrackSolver(p);
         s.solve();
-        s.report(p);
+        s.report();
 
     }
 

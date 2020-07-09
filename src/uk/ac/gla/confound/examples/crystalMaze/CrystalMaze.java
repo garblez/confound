@@ -4,12 +4,8 @@ import uk.ac.gla.confound.constraint.DistanceConstraint;
 import uk.ac.gla.confound.constraint.NeqConstraint;
 import uk.ac.gla.confound.problem.Domain;
 import uk.ac.gla.confound.problem.Problem;
-import uk.ac.gla.confound.solver.BacktrackSolver;
 import uk.ac.gla.confound.solver.ForwardCheckSolver;
 import uk.ac.gla.confound.solver.Solver;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CrystalMaze extends Problem {
 
@@ -57,7 +53,7 @@ public class CrystalMaze extends Problem {
         Solver s = new ForwardCheckSolver(p);
 
         s.solve();
-        s.report(p);
+        s.report();
     }
 
 

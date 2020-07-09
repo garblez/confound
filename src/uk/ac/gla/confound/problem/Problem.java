@@ -18,7 +18,7 @@ public abstract class Problem {
         this.numVariables = numVariables;
         variables = new Variable[numVariables+1];
         for (int i = 0; i < this.numVariables+1; i++) {
-            Variable.incrementAmount();
+            Variable.incrementAmount(this.numVariables+1);
             variables[i] = new Variable(dom);
         }
 
@@ -33,8 +33,10 @@ public abstract class Problem {
         this.numVariables = numVariables;
         variables = new Variable[this.numVariables + 1];
 
-        for (int i = 0; i < this.numVariables + 1; i++)
+        for (int i = 0; i < this.numVariables + 1; i++) {
+            Variable.incrementAmount(this.numVariables+1);
             variables[i] = new Variable(domain);
+        }
 
 
         // Initialise a constraint mapping such that the pair of indices of the concerned variables map to the

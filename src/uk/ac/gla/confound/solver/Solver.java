@@ -4,6 +4,7 @@ import uk.ac.gla.confound.examples.crystalMaze.CrystalMaze;
 import uk.ac.gla.confound.examples.nqueens.NQueens;
 import uk.ac.gla.confound.examples.sudoku.Sudoku;
 import uk.ac.gla.confound.problem.Problem;
+import uk.ac.gla.confound.problem.Variable;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  * ArrayList previousValues, a list of the previous values found
  */
 public abstract class Solver implements SolverMethods {
-    public static String NAME = "Base Solver";
+    public static String NAME = "";
     public Problem p;
     public Status status;
     public Statistics stats;
@@ -28,6 +29,11 @@ public abstract class Solver implements SolverMethods {
         this.p = p;
     }
 
+    /**
+     * Solve the Problem class instantiated with the problem based on the variables and constraints within and store the
+     * result(s) in a solution arraylist. Record statistics during the search.
+     * @param n The number of solutions to attempt a search for
+     */
     public void solve(int n)
     {
         stats.setCurrentTime(System.currentTimeMillis());
@@ -43,21 +49,17 @@ public abstract class Solver implements SolverMethods {
                 stats.incBacktracks();
             }
 
+            // All variables have been assigned consistent values: a solution has been found
             if (i > p.numVariables) {
-                stats.incSolutions(); // Now we've found one iteration, we try to find another until there is none
-
-                int[] solution = new int[p.variables.length-1];
-                for (int j = 1; j < p.variables.length; j++) {
-                    solution[j-1] = p.variables[j].value;
-                }
-                p.solutions.add(solution);
+                stats.incSolutions();
+                addNewSolution();
 
                 i -= 1;
                 p.consistent = false;
 
-                if (p.solutions.size() == n) {
+                if (p.solutions.size() == n)
                     status = Status.SOLUTION;  // Causes the solver to break from searching
-                }
+
 
             } else if (i == 0)
                 status = Status.IMPOSSIBLE;
@@ -66,8 +68,12 @@ public abstract class Solver implements SolverMethods {
             stats.markVisited(i);
         }
         stats.findDuration();
+        stats.setStatus(status);
     }
 
+    /**
+     * Attempt to solve for all possible solutions to the problem class instantiated with the solver.
+     */
     public void solve()
     {
         stats.setCurrentTime(System.currentTimeMillis());
@@ -77,7 +83,7 @@ public abstract class Solver implements SolverMethods {
         int i = 1;
 
         // Keep searching for the first/next solution
-        while (status == Status.UNKNOWN || status == Status.SOLUTION) {
+        while (status != Status.IMPOSSIBLE) {
             if (p.consistent) {
                 i = label(i);
             } else {
@@ -86,44 +92,65 @@ public abstract class Solver implements SolverMethods {
             }
 
             if (i > p.numVariables) {
+                status = Status.SOLUTION;
                 stats.incSolutions(); // Now we've found one iteration, we try to find another until there is none
+                addNewSolution();
 
-                int[] solution = new int[p.variables.length-1];
-                for (int j = 1; j < p.variables.length; j++) {
-                    solution[j-1] = p.variables[j].value;
-                }
-                p.solutions.add(solution);
                 i -= 1;
                 p.consistent = false;
-                status = Status.SOLUTION;
-            } else if (i == 0)
+
+            } else if (i == 0) // No consistent variable assignments were found for the problem
                 status = Status.IMPOSSIBLE;
 
             stats.incNodesVisited();
             stats.markVisited(i);
-            //addToPath(i);
         }
-        stats.findDuration();
+        stats.findDuration(); // Get the entire search process duration
+        stats.setStatus(status);
     }
 
+
+    /**
+     * Print the statistics regarding the search
+     */
     public void printStats() {
-        System.out.println(stats+"\n");
+        System.out.println(stats);
     }
 
-    public void report(Problem p)
+
+    /**
+     * Report all of the solutions to the problem instantiated with the solver
+     */
+    public void report()
     {
         System.out.println(p.solutions.size() > 0 ? Status.SOLUTION : status);
 
-            System.out.println(p.solutions.size() + " solutions as follows");
-            for (int i = 0; i < p.solutions.size(); i++)
-                p.print(i);
-            System.out.println();
-            System.out.println("=--------------------------=");
-
+        System.out.println(p.solutions.size() + " solutions as follows");
+        for (int i = 0; i < p.solutions.size(); i++)
+            p.print(i);
+        System.out.println();
+        System.out.println("=--------------------------=");
     }
 
-    public void addToPath(int index) {
+
+    /**
+     * Add index to the path the solver has taken in the search so far
+     * @param index
+     */
+    private void addToPath(int index) {
         path.add(index);
+    }
+
+
+    /**
+     * Add the current variable-value configuration for the problem into the solution set
+     */
+    private void addNewSolution() {
+        int[] solution = new int[p.variables.length-1];
+        for (int j = 1; j < p.variables.length; j++) {
+            solution[j-1] = p.variables[j].value;
+        }
+        p.solutions.add(solution);
     }
 
     // Usage: [Solver] [Problem] {-n [num vars]}
@@ -186,7 +213,7 @@ public abstract class Solver implements SolverMethods {
             if (s == null || p == null) System.exit(-1);
 
             s.solve();
-            s.report(p);
+            s.report();
             s.printStats();
         }
 

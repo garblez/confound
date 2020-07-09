@@ -12,6 +12,6 @@ public class Solve {
                 "/"+"src/uk/ac/gla/confound/examples/sudoku/prob0.sudoku");
         Solver bt = new BacktrackSolver(p);
         bt.solve(1);
-        bt.report(p);
+        bt.report();
     }
 }
